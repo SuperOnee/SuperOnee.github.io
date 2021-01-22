@@ -261,7 +261,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/jwt/thumbnail.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/jwt/thumbnail.png');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -273,6 +273,84 @@
     </div>
 </div>
 
+<style>
+    .post-title {
+    font-family: 'Audiowide';
+    text-align: center;
+    color: #2afcc7;
+    font-size: 7em;
+    -webkit-transition: all 1.5s ease;
+            transition: all 1.5s ease;
+}
+.post-title {
+    color: #fff;
+    -webkit-animation: Glow 1.5s ease infinite alternate;
+            animation: Glow 1.5s ease infinite alternate;
+
+}
+@-webkit-keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+@keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+</style>
+
+<script>
+    $(() => {
+        let date = new Date();
+        setInterval(() => {
+            let number = parseInt(Math.random() * 4);
+            if (number === 0) {
+                $('.post-title').css('filter', 'invert(1)');
+            } else if (number === 1) {
+                $('.post-title').css('filter', 'drop-shadow(2px 4px 6px black)');
+            } else if (number === 2) {
+                $('.post-title').css('filter', 'sepia(0.5)');
+            } else {
+                $('.post-title').css('filter', 'none');
+            }
+        }, 2000);
+    });
+</script>
 
 
 
@@ -306,9 +384,6 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
-        background-color: transparent;
-        border-radius: 20px;
-        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
     }
 
     .toc-widget .toc-title {
@@ -337,7 +412,7 @@
     }
 
     #toc-content .toc-link:hover {
-        color:#f79941;
+        color: #42b983;
         font-weight: 700;
         text-decoration: underline;
     }
@@ -352,7 +427,7 @@
     }
 
     #toc-content .is-active-link {
-        color: #f79941;
+        color: #42b983;
     }
 
     #floating-toc-btn {
@@ -423,7 +498,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.5k
                 </div>
                 
 
@@ -484,7 +559,9 @@ eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5hdGhhbiJ9.585868e82b0e0e4ff423aea394874c
 <li>无法销毁一个jwt.</li>
 </ol>
 <h4 id="手写实现JWT"><a href="#手写实现JWT" class="headerlink" title="手写实现JWT"></a>手写实现JWT</h4><ol>
-<li>引入对应pom依赖<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+<li>引入对应pom依赖</li>
+</ol>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>fastjson<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.2.75<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
@@ -538,17 +615,19 @@ eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5hdGhhbiJ9.585868e82b0e0e4ff423aea394874c
         <span class="token keyword">return</span> <span class="token punctuation">(</span>payloadMd5<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>jwt<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\\."</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="将生成的jwt在官方Json-Web-Token官方解析"><a href="#将生成的jwt在官方Json-Web-Token官方解析" class="headerlink" title="将生成的jwt在官方Json Web Token官方解析"></a>将生成的jwt在官方Json Web Token官方解析</h4><iframe src="https://www.jsonwebtoken.io/" width="800px" height="800px" frameborder="0" loading="lazy" allowfullscreen></iframe>
 
+<h3 id="jwt整合security框架"><a href="#jwt整合security框架" class="headerlink" title="jwt整合security框架"></a>jwt整合security框架</h3><h4 id="请求流程"><a href="#请求流程" class="headerlink" title="请求流程"></a>请求流程</h4><ol>
+<li><p>验证账号密码: userDetailsService.</p>
+</li>
+<li><p>验证成功后给客户端返回jwt.</p>
+</li>
+<li><p>每次请求接口时验证jwt并校验权限.</p>
 </li>
 </ol>
-<h3 id="jwt整合security框架"><a href="#jwt整合security框架" class="headerlink" title="jwt整合security框架"></a>jwt整合security框架</h3><h4 id="请求流程"><a href="#请求流程" class="headerlink" title="请求流程"></a>请求流程</h4><ol>
-<li>验证账号密码: userDetailsService.</li>
-<li>验证成功后给客户端返回jwt.</li>
-<li>每次请求接口时验证jwt并校验权限.</li>
-</ol>
 <h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
-<li><p>创建登陆接口<br>现在配置文件中添加jwt.secret.</p>
+<li>创建登陆接口</li>
+</ol>
+<p>现在配置文件中添加jwt.secret.</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">jwt.secret</span><span class="token punctuation">=</span><span class="token attr-value">ajlfkdjslfjsd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/authenticate"</span><span class="token punctuation">)</span>
@@ -581,7 +660,8 @@ eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5hdGhhbiJ9.585868e82b0e0e4ff423aea394874c
             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"密码错误"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
 <li><p>当用户尝试访问安全的REST资源而不提供任何凭据时, 发送401响应</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JwtAuthenticationEntryPoint</span> <span class="token keyword">implements</span> <span class="token class-name">AuthenticationEntryPoint</span><span class="token punctuation">,</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
@@ -1300,7 +1380,7 @@ CriteriaQuery select操作Crit
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card">
+        <div class="toc-widget card" style="background-color: transparent;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>

@@ -261,7 +261,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/spring/thumbnail.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/spring/thumbnail.png');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -273,6 +273,84 @@
     </div>
 </div>
 
+<style>
+    .post-title {
+    font-family: 'Audiowide';
+    text-align: center;
+    color: #2afcc7;
+    font-size: 7em;
+    -webkit-transition: all 1.5s ease;
+            transition: all 1.5s ease;
+}
+.post-title {
+    color: #fff;
+    -webkit-animation: Glow 1.5s ease infinite alternate;
+            animation: Glow 1.5s ease infinite alternate;
+
+}
+@-webkit-keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+@keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+</style>
+
+<script>
+    $(() => {
+        let date = new Date();
+        setInterval(() => {
+            let number = parseInt(Math.random() * 4);
+            if (number === 0) {
+                $('.post-title').css('filter', 'invert(1)');
+            } else if (number === 1) {
+                $('.post-title').css('filter', 'drop-shadow(2px 4px 6px black)');
+            } else if (number === 2) {
+                $('.post-title').css('filter', 'sepia(0.5)');
+            } else {
+                $('.post-title').css('filter', 'none');
+            }
+        }, 2000);
+    });
+</script>
 
 
 
@@ -306,9 +384,6 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
-        background-color: transparent;
-        border-radius: 20px;
-        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
     }
 
     .toc-widget .toc-title {
@@ -337,7 +412,7 @@
     }
 
     #toc-content .toc-link:hover {
-        color:#f79941;
+        color: #42b983;
         font-weight: 700;
         text-decoration: underline;
     }
@@ -352,7 +427,7 @@
     }
 
     #toc-content .is-active-link {
-        color: #f79941;
+        color: #42b983;
     }
 
     #floating-toc-btn {
@@ -711,9 +786,10 @@
         <span class="token punctuation">(</span>?<span class="token punctuation">,</span> ?<span class="token punctuation">,</span> ?<span class="token punctuation">,</span> ?<span class="token punctuation">,</span> ?<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 结果: ApplicationUser{id=8, name=’nathan’, age=18, email=’nathanneil66@gmail.com’, luckyNumbers=[1, 2]}</li>
 </ol>
-<h3 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h3><p>使用@OneToOne注解即可完成一对一关联. </p>
+<h3 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h3><p>使用@OneToOne注解即可完成一对一关联.</p>
 <ol>
-<li><p>ApplicationUser实体类</p>
+<li>ApplicationUser实体类</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Accessors</span><span class="token punctuation">(</span>chain <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
@@ -752,8 +828,11 @@
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> street<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> city<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>Junit测试<br>两张表在数据库中都没有数据, 这里演示新增操作.</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>Junit测试</li>
+</ol>
+<p>两张表在数据库中都没有数据, 这里演示新增操作.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
    <span class="token keyword">void</span> <span class="token function">oneToOneInsertTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token class-name">ApplicationUser</span> applicationUser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ApplicationUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -764,7 +843,7 @@
        <span class="token class-name">ApplicationUser</span> savedUser <span class="token operator">=</span> applicationUserRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>applicationUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
        <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>savedUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>sql执行结果: </p>
+<p>sql执行结果:</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 一共执行了两条sql</span>
 <span class="token keyword">insert</span> 
 <span class="token keyword">into</span>
@@ -788,10 +867,13 @@
 
    <span class="token comment">//执行结果: ApplicationUser(id=7, name=nathan, age=20, email=nathanneil66@gmail.com, luckyNumbers=[1, 2], address=Address(id=5, street=老虎城, city=拉斯维加斯))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="一对一懒加载"><a href="#一对一懒加载" class="headerlink" title="一对一懒加载"></a>一对一懒加载</h3><p>懒加载就是, 没有使用到关联表的时候不进行关联表的查询.</p>
-</li>
-<li><p>配置文件<br>在配置文件中开启懒加载: spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true</p>
-</li>
-<li><p>ApplicationUser实体类</p>
+<ol>
+<li>配置文件</li>
+</ol>
+<p>在配置文件中开启懒加载: <code>spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true</code></p>
+<ol start="2">
+<li>ApplicationUser实体类</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Accessors</span><span class="token punctuation">(</span>chain <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
@@ -840,8 +922,10 @@
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> street<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> city<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>Junit查询</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>Junit查询</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">oneToOneTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">ApplicationUser</span> applicationUser <span class="token operator">=</span> applicationUserRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ApplicationUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -854,7 +938,7 @@
         
         Address(id=5, street=老虎城, city=拉斯维加斯) */</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>sql执行结果: </p>
+<p>sql执行结果:</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 一共进行了两次sql查询</span>
 
 <span class="token comment"># 第一次</span>
@@ -879,8 +963,9 @@
     address address0_ 
 <span class="token keyword">where</span>
     address0_<span class="token punctuation">.</span>id<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="一对多关联-单向"><a href="#一对多关联-单向" class="headerlink" title="一对多关联(单向)"></a>一对多关联(单向)</h3></li>
-<li><p>applicationUser实体类</p>
+<h3 id="一对多关联-单向"><a href="#一对多关联-单向" class="headerlink" title="一对多关联(单向)"></a>一对多关联(单向)</h3><ol>
+<li>applicationUser实体类</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Accessors</span><span class="token punctuation">(</span>chain <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
@@ -918,8 +1003,10 @@
     <span class="token keyword">private</span> <span class="token class-name">String</span> street<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> city<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> userId<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>Junit查询</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>Junit查询</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
    <span class="token keyword">void</span> <span class="token function">oneToManyTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token class-name">ApplicationUser</span> applicationUser <span class="token operator">=</span> applicationUserRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ApplicationUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -952,8 +1039,9 @@
     address addresslis0_ 
 <span class="token keyword">where</span>
     addresslis0_<span class="token punctuation">.</span>user_id<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="一对多关联-双向"><a href="#一对多关联-双向" class="headerlink" title="一对多关联(双向)"></a>一对多关联(双向)</h3></li>
-<li><p>applicationUser实体类</p>
+<h3 id="一对多关联-双向"><a href="#一对多关联-双向" class="headerlink" title="一对多关联(双向)"></a>一对多关联(双向)</h3><ol>
+<li>applicationUser实体类</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Accessors</span><span class="token punctuation">(</span>chain <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
@@ -992,8 +1080,10 @@
 
     <span class="token annotation punctuation">@ManyToOne</span>
     <span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"user_id"</span><span class="token punctuation">,</span> nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> <span class="token class-name">ApplicationUser</span> applicationUser<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>Junit测试查询</p>
+    <span class="token keyword">private</span> <span class="token class-name">ApplicationUser</span> applicationUser<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>Junit测试查询</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">oneToManyTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">//通过Address拿到User</span>
@@ -1007,10 +1097,15 @@
         <span class="token comment">/* ApplicationUser(id=7, name=nathan, age=20, email=nathanneil66@gmail.com, luckyNumbers=[1, 2], addressList=[Address&#123;id=7, street='旧金山街道', city='旧金山'&#125;, Address&#123;id=8, street='柏林克', city='纽约'&#125;]) */</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="多对多关联-基本"><a href="#多对多关联-基本" class="headerlink" title="多对多关联(基本)"></a>多对多关联(基本)</h3><p>实现基本的多对多关联, 不使用复合主键</p>
-</li>
-<li><p>配置文件<br>在配置文件中加上: spring.jpa.hibernate.ddl-auto=update<br><br>如果没有这张表启动项目后JPA会自动创建</p>
-</li>
-<li><p>实体类</p>
+<ol>
+<li>配置文件<br>在配置文件中加上: <code>spring.jpa.hibernate.ddl-auto=update</code></li>
+</ol>
+<br>
+
+<p>如果没有这张表启动项目后JPA会自动创建</p>
+<ol start="2">
+<li>实体类</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//ApplicationUser实体类, 注意要重写toString否则会递归导致栈溢出</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Accessors</span><span class="token punctuation">(</span>chain <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
@@ -1081,8 +1176,11 @@
                 <span class="token string">", city='"</span> <span class="token operator">+</span> city <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
                 <span class="token string">'&#125;'</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>Junit查询测试<br>在关联表中添加完数据后, 进行查询, 这里就不做添加数据的演示了.</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>Junit查询测试</li>
+</ol>
+<p>在关联表中添加完数据后, 进行查询, 这里就不做添加数据的演示了.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">manyToManyTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">ApplicationUser</span> user <span class="token operator">=</span> applicationUserRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1094,7 +1192,7 @@
 [Address&#123;id=7, street='旧金山街道', city='旧金山'&#125;, Address&#123;id=8, street='柏林克', city='纽约'&#125;,
  Address&#123;id=9, street='大版', city='东京'&#125;, 
  Address&#123;id=10, street='湖里区', city='厦门'&#125;] */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行的sql: </p>
+<p>执行的sql:</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 这里因为Address中的一对多是懒加载, 所以只执行了一次sql</span>
 
 <span class="token keyword">select</span>
@@ -1119,8 +1217,9 @@
 <span class="token keyword">where</span>
     applicatio0_<span class="token punctuation">.</span>id<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="多对多关联-使用复合主键"><a href="#多对多关联-使用复合主键" class="headerlink" title="多对多关联(使用复合主键)"></a>多对多关联(使用复合主键)</h3><p>使用复合主键完成多对多关联</p>
-</li>
-<li><p>创建复合主键类, 必须实现Serializable接口</p>
+<ol>
+<li>创建复合主键类, 必须实现Serializable接口</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Embeddable</span> <span class="token comment">//使用@Embeddable将UserAddressId定义为嵌入式组件</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserAddressId</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
@@ -1129,8 +1228,10 @@
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> userId<span class="token punctuation">;</span>
     <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"address_id"</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> addressId<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>创建关系表实体</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>创建关系表实体</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserAddress</span> <span class="token punctuation">&#123;</span>
@@ -1153,8 +1254,11 @@
     <span class="token keyword">private</span> <span class="token class-name">Address</span> address<span class="token punctuation">;</span>
 
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> rating<span class="token punctuation">;</span> <span class="token comment">//关系表中的字段</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>ApplicationUser和Address实体<br>注意重写toString函数, 避免toString递归导致栈溢出</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>ApplicationUser和Address实体</li>
+</ol>
+<p>注意重写toString函数, 避免toString递归导致栈溢出</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//ApplicationUser实体</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Accessors</span><span class="token punctuation">(</span>chain <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
@@ -1215,8 +1319,10 @@
                 <span class="token string">", city='"</span> <span class="token operator">+</span> city <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
                 <span class="token string">'&#125;'</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>Junit查询测试</p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>Junit查询测试</li>
+</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">manyToManyTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">ApplicationUser</span> user <span class="token operator">=</span> applicationUserRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1274,7 +1380,7 @@
     application_user applicatio0_ 
 <span class="token keyword">where</span>
     applicatio0_<span class="token punctuation">.</span>id<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>懒加载的情况下一共执行了3次查询, 因为在ApplicationUser中@OneToMany注解中没有指定FetchType,<br>点开@OneToMany的源码可以发现, 默认的FetchType为LAZY即为懒加载.</p>
+<p>懒加载的情况下一共执行了3次查询, 因为在ApplicationUser中@OneToMany注解中没有指定FetchType,<br>点开<code>@OneToMany</code>的源码可以发现, 默认的FetchType为LAZY即为懒加载.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** (Optional) Whether the association should be lazily loaded or
      * must be eagerly fetched. The EAGER strategy is a requirement on
      * the persistence provider runtime that the associated entities
@@ -1336,14 +1442,12 @@
     application_user applicatio0_ 
 <span class="token keyword">left</span> <span class="token keyword">outer</span> <span class="token keyword">join</span>
     user_address ratings1_ 
-        <span class="token keyword">on</span> applicatio0_<span class="token punctuation">.</span>id<span class="token operator">=</span>ratings1_<span class="token punctuation">.</span>user_id 
+        <span class="token keyword">on</span> applicatio0_<span class="token punctuation">.</span>id<span class="token operator">=</span>ratings1_<span class="token punctuation">.</span>user_id
 <span class="token keyword">left</span> <span class="token keyword">outer</span> <span class="token keyword">join</span>
     address address2_ 
         <span class="token keyword">on</span> ratings1_<span class="token punctuation">.</span>address_id<span class="token operator">=</span>address2_<span class="token punctuation">.</span>id 
 <span class="token keyword">where</span>
-    applicatio0_<span class="token punctuation">.</span>id<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-
+    applicatio0_<span class="token punctuation">.</span>id<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1895,7 +1999,7 @@
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card">
+        <div class="toc-widget card" style="background-color: transparent;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>

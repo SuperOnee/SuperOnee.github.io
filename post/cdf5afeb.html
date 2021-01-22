@@ -261,7 +261,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/spring/thumbnail.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/spring/thumbnail.png');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -273,6 +273,84 @@
     </div>
 </div>
 
+<style>
+    .post-title {
+    font-family: 'Audiowide';
+    text-align: center;
+    color: #2afcc7;
+    font-size: 7em;
+    -webkit-transition: all 1.5s ease;
+            transition: all 1.5s ease;
+}
+.post-title {
+    color: #fff;
+    -webkit-animation: Glow 1.5s ease infinite alternate;
+            animation: Glow 1.5s ease infinite alternate;
+
+}
+@-webkit-keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+@keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+</style>
+
+<script>
+    $(() => {
+        let date = new Date();
+        setInterval(() => {
+            let number = parseInt(Math.random() * 4);
+            if (number === 0) {
+                $('.post-title').css('filter', 'invert(1)');
+            } else if (number === 1) {
+                $('.post-title').css('filter', 'drop-shadow(2px 4px 6px black)');
+            } else if (number === 2) {
+                $('.post-title').css('filter', 'sepia(0.5)');
+            } else {
+                $('.post-title').css('filter', 'none');
+            }
+        }, 2000);
+    });
+</script>
 
 
 
@@ -306,9 +384,6 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
-        background-color: transparent;
-        border-radius: 20px;
-        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
     }
 
     .toc-widget .toc-title {
@@ -337,7 +412,7 @@
     }
 
     #toc-content .toc-link:hover {
-        color:#f79941;
+        color: #42b983;
         font-weight: 700;
         text-decoration: underline;
     }
@@ -352,7 +427,7 @@
     }
 
     #toc-content .is-active-link {
-        color: #f79941;
+        color: #42b983;
     }
 
     #floating-toc-btn {
@@ -514,7 +589,7 @@
 <span class="token keyword">where</span>
     user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>? <span class="token comment">#这里拼上了指定的where条件(username='admin')</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="使用and-or拼接条件"><a href="#使用and-or拼接条件" class="headerlink" title="使用and/or拼接条件"></a>使用and/or拼接条件</h4><p>除了构建单个查询条件外, 还可以使用and或者or拼接多个查询条件.</p>
-<ul>
+<ol>
 <li>使用and拼接条件<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">criteriaApiTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">CriteriaBuilder</span> criteriaBuilder <span class="token operator">=</span> entityManager<span class="token punctuation">.</span><span class="token function">getCriteriaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -534,13 +609,16 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resultList<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">//输出结果: [admin]</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-执行的sql: <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
+执行的sql: </li>
+</ol>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
     user0_<span class="token punctuation">.</span>username <span class="token keyword">as</span> col_0_0_ 
 <span class="token keyword">from</span>
     <span class="token keyword">user</span> user0_ 
 <span class="token keyword">where</span>
     user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>? 
-    <span class="token operator">and</span> user0_<span class="token punctuation">.</span>id<span class="token operator">=</span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+    <span class="token operator">and</span> user0_<span class="token punctuation">.</span>id<span class="token operator">=</span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
 <li>使用or拼接条件<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">criteriaApiTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">CriteriaBuilder</span> criteriaBuilder <span class="token operator">=</span> entityManager<span class="token punctuation">.</span><span class="token function">getCriteriaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -560,14 +638,17 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resultList<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">//输出结果: [user, admin]</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-执行的sql: <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
+执行的sql: </li>
+</ol>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
     user0_<span class="token punctuation">.</span>username <span class="token keyword">as</span> col_0_0_ 
 <span class="token keyword">from</span>
     <span class="token keyword">user</span> user0_ 
 <span class="token keyword">where</span>
     user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>? 
     <span class="token operator">or</span> user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="join-连表操作"><a href="#join-连表操作" class="headerlink" title="join 连表操作"></a>join 连表操作</h4>root接口的父类From接口提供了join操作, 可以用于连接查询, 在使用join的时候要注意, 只有和实体类关联的表可以使用join, 如果和实体类没有关联, 那么就不能使用join.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//查询角色id为1的用户名</span>
+<h4 id="连表操作"><a href="#连表操作" class="headerlink" title="连表操作"></a>连表操作</h4><p>root接口的父类From接口提供了join操作, 可以用于连接查询, 在使用join的时候要注意, 只有和实体类关联的表可以使用join, 如果和实体类没有关联, 那么就不能使用join.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//查询角色id为1的用户名</span>
 <span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">criteriaApiTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">CriteriaBuilder</span> criteriaBuilder <span class="token operator">=</span> entityManager<span class="token punctuation">.</span><span class="token function">getCriteriaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -584,7 +665,8 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>usernames<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">//输出结果: [user]</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-执行的sql: <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
+<p>执行的sql: </p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
     user0_<span class="token punctuation">.</span>username <span class="token keyword">as</span> col_0_0_ 
 <span class="token keyword">from</span>
     <span class="token keyword">user</span> user0_ 
@@ -596,11 +678,9 @@
         <span class="token keyword">on</span> userroles1_<span class="token punctuation">.</span>role_id<span class="token operator">=</span>role2_<span class="token punctuation">.</span>id 
 <span class="token keyword">where</span>
     role2_<span class="token punctuation">.</span>id<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-join后根据父表条件查询子表</li>
-</ul>
+<p>join后根据父表条件查询子表</p>
 <ol>
-<li><p>使用Path的方式</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//根据用户名admin查询对应的角色信息</span>
+<li>使用Path的方式<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//根据用户名admin查询对应的角色信息</span>
 <span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">criteriaApiTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">CriteriaBuilder</span> criteriaBuilder <span class="token operator">=</span> entityManager<span class="token punctuation">.</span><span class="token function">getCriteriaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -621,7 +701,8 @@ join后根据父表条件查询子表</li>
         <span class="token comment">//2</span>
         <span class="token comment">//admin</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行的sql: </p>
+执行的sql: </li>
+</ol>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
     role2_<span class="token punctuation">.</span>id <span class="token keyword">as</span> id1_1_<span class="token punctuation">,</span>
     role2_<span class="token punctuation">.</span>role_name <span class="token keyword">as</span> role_nam2_1_ 
@@ -634,7 +715,8 @@ join后根据父表条件查询子表</li>
     role role2_ 
         <span class="token keyword">on</span> userroles1_<span class="token punctuation">.</span>role_id<span class="token operator">=</span>role2_<span class="token punctuation">.</span>id 
 <span class="token keyword">where</span>
-    user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+    user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
 <li><p>使用Join<br>与最上方的例子类似…</p>
 </li>
 <li><p>user表 join role 再jion permission, 根据Permission条件查找用户名.</p>
@@ -684,7 +766,7 @@ join后根据父表条件查询子表</li>
     permission4_<span class="token punctuation">.</span>permission_tag <span class="token operator">in</span> <span class="token punctuation">(</span>
         ? <span class="token punctuation">,</span> ?
     <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="join-on条件的拼接"><a href="#join-on条件的拼接" class="headerlink" title="join on条件的拼接"></a>join on条件的拼接</h4><p>在使用rootJoin的时候, on条件都是原先注解关联的条件, 我们可以使用join.on函数进行条件的拼接.</p>
+<h4 id="joinOn条件的拼接"><a href="#joinOn条件的拼接" class="headerlink" title="joinOn条件的拼接"></a>joinOn条件的拼接</h4><p>在使用rootJoin的时候, on条件都是原先注解关联的条件, 我们可以使用join.on函数进行条件的拼接.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">joinTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">CriteriaBuilder</span> criteriaBuilder <span class="token operator">=</span> entityManager<span class="token punctuation">.</span><span class="token function">getCriteriaBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -842,7 +924,9 @@ join后根据父表条件查询子表</li>
                 <span class="token punctuation">(</span><span class="token class-name">Specification</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> <span class="token punctuation">(</span>root<span class="token punctuation">,</span> query<span class="token punctuation">,</span> criteriaBuilder<span class="token punctuation">)</span> <span class="token operator">-></span> criteriaBuilder<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"admin"</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>userList<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-执行的sql: <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
+执行的sql: </li>
+</ol>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span>
     user0_<span class="token punctuation">.</span>id <span class="token keyword">as</span> id1_3_<span class="token punctuation">,</span>
     user0_<span class="token punctuation">.</span>password <span class="token keyword">as</span> password2_3_<span class="token punctuation">,</span>
     user0_<span class="token punctuation">.</span>username <span class="token keyword">as</span> username3_3_ 
@@ -850,9 +934,7 @@ join后根据父表条件查询子表</li>
     <span class="token keyword">user</span> user0_ 
 <span class="token keyword">where</span>
     user0_<span class="token punctuation">.</span>username<span class="token operator">=</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Jpa规范化MetaModel"><a href="#Jpa规范化MetaModel" class="headerlink" title="Jpa规范化MetaModel"></a>Jpa规范化MetaModel</h3></li>
-</ol>
-<p>Jpa metaModel 通过User实体类生成后长这样. </p>
+<h3 id="SpringDataJpa规范化MetaModel"><a href="#SpringDataJpa规范化MetaModel" class="headerlink" title="SpringDataJpa规范化MetaModel"></a>SpringDataJpa规范化MetaModel</h3><p>Jpa metaModel 通过User实体类生成后长这样. </p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Generated</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor"</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@StaticMetamodel</span><span class="token punctuation">(</span><span class="token class-name">User</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">User_</span> <span class="token punctuation">&#123;</span>
@@ -903,7 +985,7 @@ join后根据父表条件查询子表</li>
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>usernames<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="自定义sql"><a href="#自定义sql" class="headerlink" title="自定义sql"></a>自定义sql</h3><p>除了使用上面的API我们还可以自定义sql.</p>
-<h4 id="原生sql"><a href="#原生sql" class="headerlink" title="原生sql"></a>原生sql</h4><p>在接口中添加查询方法, 并使用原生sql进行查询.</p>
+<h4 id="1-原生sql"><a href="#1-原生sql" class="headerlink" title="1.原生sql"></a>1.原生sql</h4><p>在接口中添加查询方法, 并使用原生sql进行查询.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">></span></span><span class="token punctuation">,</span> <span class="token class-name">JpaSpecificationExecutor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
     <span class="token comment">//这里 :username为形参, 名字要和参数名一致</span>
     <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"select u.id, u.username, u.password from user u where u.username = :username"</span><span class="token punctuation">,</span> nativeQuery <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token comment">//nativeQuery = true原生sql</span>
@@ -965,7 +1047,9 @@ join后根据父表条件查询子表</li>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>如果我接口的getId()方法名改成getUserId则projection.getUserId()行输出 null.</code></p>
 <ol start="2">
-<li>非封闭式投影<br>封闭式要求方法名必须规范, 而非封闭式则不用. 但是需要借助@Value注解和SpEL表达式来完成映射.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//封闭式投影接口</span>
+<li>非封闭式投影<br>封闭式要求方法名必须规范, 而非封闭式则不用. 但是需要借助@Value注解和SpEL表达式来完成映射.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//封闭式投影接口</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserProjection</span> <span class="token punctuation">&#123;</span>
 
     <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"#&#123;target.id&#125;"</span><span class="token punctuation">)</span> <span class="token comment">//target指向实体类</span>
@@ -974,9 +1058,8 @@ join后根据父表条件查询子表</li>
     <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"#&#123;target.username&#125;"</span><span class="token punctuation">)</span>
     <span class="token class-name">String</span> <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="entityManager执行sql"><a href="#entityManager执行sql" class="headerlink" title="entityManager执行sql."></a>entityManager执行sql.</h4><code>除了在Repository接口中自定义sql外, entityManager也可以执行自定义sql. 这里就不进行演示了.</code></li>
-</ol>
-
+<h4 id="ENTITYMANAGER执行sql"><a href="#ENTITYMANAGER执行sql" class="headerlink" title="ENTITYMANAGER执行sql"></a>ENTITYMANAGER执行sql</h4><blockquote><p>除了在Repository接口中自定义sql外, entityManager也可以执行自定义sql. 这里就不进行演示了.</p>
+</blockquote>
                 
             </div>
             <hr/>
@@ -1532,7 +1615,7 @@ join后根据父表条件查询子表</li>
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card">
+        <div class="toc-widget card" style="background-color: transparent;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>

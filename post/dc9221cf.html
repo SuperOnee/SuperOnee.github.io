@@ -261,7 +261,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/java/javalogo.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/java/javalogo.jpg');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -273,6 +273,84 @@
     </div>
 </div>
 
+<style>
+    .post-title {
+    font-family: 'Audiowide';
+    text-align: center;
+    color: #2afcc7;
+    font-size: 7em;
+    -webkit-transition: all 1.5s ease;
+            transition: all 1.5s ease;
+}
+.post-title {
+    color: #fff;
+    -webkit-animation: Glow 1.5s ease infinite alternate;
+            animation: Glow 1.5s ease infinite alternate;
+
+}
+@-webkit-keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+@keyframes Glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #00a67c,
+                     0 0 70px #00a67c,
+                     0 0 80px #00a67c,
+                     0 0 100px #00a67c,
+                     0 0 150px #00a67c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #fff,
+                     0 0 15px #fff,
+                     0 0 20px #00a67c,
+                     0 0 35px #00a67c,
+                     0 0 40px #00a67c,
+                     0 0 50px #00a67c,
+                     0 0 75px #00a67c;
+    }
+}
+</style>
+
+<script>
+    $(() => {
+        let date = new Date();
+        setInterval(() => {
+            let number = parseInt(Math.random() * 4);
+            if (number === 0) {
+                $('.post-title').css('filter', 'invert(1)');
+            } else if (number === 1) {
+                $('.post-title').css('filter', 'drop-shadow(2px 4px 6px black)');
+            } else if (number === 2) {
+                $('.post-title').css('filter', 'sepia(0.5)');
+            } else {
+                $('.post-title').css('filter', 'none');
+            }
+        }, 2000);
+    });
+</script>
 
 
 
@@ -306,9 +384,6 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
-        background-color: transparent;
-        border-radius: 20px;
-        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
     }
 
     .toc-widget .toc-title {
@@ -337,7 +412,7 @@
     }
 
     #toc-content .toc-link:hover {
-        color:#f79941;
+        color: #42b983;
         font-weight: 700;
         text-decoration: underline;
     }
@@ -352,7 +427,7 @@
     }
 
     #toc-content .is-active-link {
-        color: #f79941;
+        color: #42b983;
     }
 
     #floating-toc-btn {
@@ -452,18 +527,21 @@
             <div id="articleContent">
                 <h3 id="StreamAPI简介"><a href="#StreamAPI简介" class="headerlink" title="StreamAPI简介"></a>StreamAPI简介</h3><p>Java8两个比较大的改变, 一个是lambda表达式, 另一个就是今天的主角StreamAPI. StremAPI主要用于处理集合, 它可以对集合进行非常复杂的操作, 例如: 筛选, 分组, 处理数据等.</p>
 <p>StreamAPI给我们操作集合带来了强大的功能, 同时呢上手还非常的容易. 在学习Stream api之前呢我们需要学习Java Lambda表达式!</p>
-<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda表达式就是匿名函数, 对于一个java变量我们可以给其赋一个 “值”.</p>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>lambda表达式就是匿名函数, 对于一个java变量我们可以给其赋一个 “值”.</p>
 <p>那么如果想把 “一块代码” 赋给一个java变量应该怎么做呢? 在java 8之前这个是做不到的, 但是java8问世之后呢, 利用lambda特性就能够做到了. 接下来看一个简单的例子</p>
-<a id="more"></a>
 <ol>
-<li>创建一个接口, 此接口必须只能有一个public方法<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">NumberOperation</span> <span class="token punctuation">&#123;</span>
-    
+<li>创建一个接口, 此接口必须只能有一个public方法</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">NumberOperation</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> <span class="token function">result</span><span class="token punctuation">(</span><span class="token keyword">int</span> n1<span class="token punctuation">,</span> <span class="token keyword">int</span> n2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
 <li>实现接口</li>
 </ol>
 <ul>
-<li>正常方式实现接口:<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<li>正常方式实现接口:</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">lambdaTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">NumberOperation</span> numberOperation <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NumberOperation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             <span class="token annotation punctuation">@Override</span>
@@ -475,15 +553,19 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">//输出3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>lamdba: 因为此接口只有一个函数, 那么我们就可以使用匿名函数的方法去实现此接口<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//输出3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>lamdba: 因为此接口只有一个函数, 那么我们就可以使用匿名函数的方法去实现此接口</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">lambdaTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">NumberOperation</span> numberOperation <span class="token operator">=</span> <span class="token punctuation">(</span>n1<span class="token punctuation">,</span> n2<span class="token punctuation">)</span> <span class="token operator">-></span> n1 <span class="token operator">+</span> n2<span class="token punctuation">;</span>
         <span class="token keyword">int</span> result <span class="token operator">=</span> numberOperation<span class="token punctuation">.</span><span class="token function">result</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token comment">//输出3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="函数引用"><a href="#函数引用" class="headerlink" title="函数引用"></a>函数引用</h3>函数引用是由lamdba演变而来, 当我们lambda的参数和返回值与我们需要引用的函数相同的时候, 此时我们就可以使用函数引用, 在java中函数引用用双冒号表示, 就像这样: Integer::sum, 直接上代码: <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<h3 id="函数引用"><a href="#函数引用" class="headerlink" title="函数引用"></a>函数引用</h3><p>函数引用是由lamdba演变而来, 当我们lambda的参数和返回值与我们需要引用的函数相同的时候, 此时我们就可以使用函数引用, 在java中函数引用用双冒号表示, 就像这样: Integer::sum, 直接上代码: </p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">lambdaTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token comment">//lambda的参数为两个int, 返回值为 int1 + int2, 结果为一个int</span>
        <span class="token comment">//此时呢, 我们就可以使用函数引用来实现我们的方法.</span>
@@ -492,8 +574,11 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token comment">//输出3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-除了函数引用之外呢, 还有一种构造引用, 其实二者没什么区别. 上代码看例子, 我们将使用java的supplier接口来完成这个例子.</li>
-<li>java内置Supplier接口<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+<p>除了函数引用之外呢, 还有一种构造引用, 其实二者没什么区别. 上代码看例子, 我们将使用java的supplier接口来完成这个例子.</p>
+<ul>
+<li>java内置Supplier接口</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * Represents a supplier of results.
  *
  * &lt;p>There is no requirement that a new or distinct result be returned each
@@ -515,15 +600,16 @@
      * @return a result
      */</span>
     <span class="token class-name">T</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//泛型为我们当前匿名函数的返回值, suuplier接口的匿名函数为无参数有返回值的方法, 此时我们就可以调用构造引用来构建一个Person对象</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>例子<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>例子</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
    <span class="token keyword">void</span> <span class="token function">lambdaReference</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token class-name">Supplier</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> supplier <span class="token operator">=</span> <span class="token class-name">Person</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">;</span>
        <span class="token class-name">Person</span> person <span class="token operator">=</span> supplier<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//返回了person对象</span>
    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Stream的操作步骤"><a href="#Stream的操作步骤" class="headerlink" title="Stream的操作步骤"></a>Stream的操作步骤</h3></li>
-</ul>
-<ol>
+<h3 id="Stream的操作步骤"><a href="#Stream的操作步骤" class="headerlink" title="Stream的操作步骤"></a>Stream的操作步骤</h3><ol>
 <li><p>创建Stream: 从一个集合或者数组中获取Stream.</p>
 </li>
 <li><p>中间操作: 对集合/数组进行数据的处理, 得到想要的结果.</p>
@@ -580,7 +666,9 @@
                 <span class="token string">", single="</span> <span class="token operator">+</span> single <span class="token operator">+</span>
                 <span class="token string">'&#125;'</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>编写测试方法<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<li>编写测试方法</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">filterTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Jackson"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -594,17 +682,19 @@
     <span class="token punctuation">&#125;</span>
 
     <span class="token comment">//输出结果: Jackson </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="无限流"><a href="#无限流" class="headerlink" title="无限流"></a>无限流</h3>无限流, 顾名思义如果不做限制的话, 就像一个死循环了类似于while(ture). 无限流有两种, 一个是iterate, 一个是generate, 这里就简单演示一种.</li>
-</ol>
+<h3 id="无限流"><a href="#无限流" class="headerlink" title="无限流"></a>无限流</h3><p>无限流, 顾名思义如果不做限制的话, 就像一个死循环了类似于while(ture). 无限流有两种, 一个是iterate, 一个是generate, 这里就简单演示一种.</p>
 <ul>
-<li>用无限流输出1 - 10<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<li>用无限流输出1 - 10</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">iterateTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">Stream</span><span class="token punctuation">.</span><span class="token function">iterate</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> s <span class="token operator">-></span> <span class="token operator">++</span>s<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Stream-API基本操作"><a href="#Stream-API基本操作" class="headerlink" title="Stream API基本操作"></a>Stream API基本操作</h3>上面已经演示过了filter, 这里就不再演示了.</li>
-</ul>
+<h3 id="Stream-API基本操作"><a href="#Stream-API基本操作" class="headerlink" title="Stream API基本操作"></a>Stream API基本操作</h3><p>上面已经演示过了filter, 这里就不再演示了.</p>
 <ol>
-<li>peek操作: peek是用来处理数据的, 我们可以将流中的元素进行遍历处理<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<li>peek操作: peek是用来处理数据的, 我们可以将流中的元素进行遍历处理</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">peekTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token comment">//使用无限流Generate生成3个person对象</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token class-name">Stream</span><span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
@@ -619,8 +709,11 @@
     <span class="token comment">//输出</span>
    <span class="token comment">//Person&#123;name='peekTest', age=19, single=false&#125;</span>
    <span class="token comment">//Person&#123;name='peekTest', age=19, single=false&#125;</span>
-   <span class="token comment">//Person&#123;name='peekTest', age=19, single=false&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>Map操作: map用于做映射, 我们可以将我们想要的东西给映射出来, 比如我们只想要Person的name属性, 此时呢我们就可以使用Map来完成. 上代码.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+   <span class="token comment">//Person&#123;name='peekTest', age=19, single=false&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>Map操作: map用于做映射, 我们可以将我们想要的东西给映射出来, 比如我们只想要Person的name属性, 此时呢我们就可以使用Map来完成. 上代码.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">mapTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
        <span class="token comment">//使用队列数据结构队列和无限流generate构建person对象</span>
         <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> nameQueue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -635,8 +728,11 @@
     <span class="token comment">//输出结果</span>
     <span class="token comment">//Jackson</span>
     <span class="token comment">//Mike</span>
-    <span class="token comment">//Steve</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>FlatMap操作: 这个这个方法可以实现将List&lt;List<T>&gt;这样的List转换为List<T>. 上代码<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//Steve</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>FlatMap操作: 这个这个方法可以实现将List&lt;List<T>&gt;这样的List转换为List<T>. 上代码</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list1 <span class="token operator">=</span> <span class="token class-name">Stream</span><span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token string">"nathan"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -649,8 +745,11 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">//输出: [nathan, nathan, nathan, rookie, rookie, rookie]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>sorted: 排序操作, 这里我们将按照Person的年龄进行升序和降序排序. 上代码<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//输出: [nathan, nathan, nathan, rookie, rookie, rookie]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>sorted: 排序操作, 这里我们将按照Person的年龄进行升序和降序排序. 上代码</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">sortedTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">Person</span> nathan <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Nathan"</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> joe <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Joe"</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -703,10 +802,11 @@
         <span class="token comment">//Person&#123;name='Nathan', age=20, single=true&#125;</span>
         <span class="token comment">//Person&#123;name='Rebecca', age=18, single=true&#125;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和limit()实现分页.</li>
-</ol>
+<p>PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和limit()实现分页.</p>
 <h3 id="collect函数与collectors使用"><a href="#collect函数与collectors使用" class="headerlink" title="collect函数与collectors使用"></a>collect函数与collectors使用</h3><ol>
-<li>joining操作: 将结果集join成字符串, 可以diy分隔符. 上代码.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<li>joining操作: 将结果集join成字符串, 可以diy分隔符. 上代码.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">joiningTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -721,8 +821,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">//输出结果: Michale,Lily,Frankly,Joe</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>mapping操作: 操作起来和map差不多, 在groupingBy中将讲解其他用法. 上代码.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//输出结果: Michale,Lily,Frankly,Joe</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>mapping操作: 操作起来和map差不多, 在groupingBy中将讲解其他用法. 上代码.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">mappingTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -741,8 +844,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
     <span class="token comment">//Michale</span>
     <span class="token comment">//Lily</span>
     <span class="token comment">//Frankly</span>
-    <span class="token comment">//Joe</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>averagingInt: 求int的平均值, 有几个类似的操作: averagingLong, averagingDouble, 这里就只演示averaginInt了. 上代码<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//Joe</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>averagingInt: 求int的平均值, 有几个类似的操作: averagingLong, averagingDouble, 这里就只演示averaginInt了. 上代码</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">averaginIntTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -758,8 +864,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">//输出: 20.0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>summarizingInt: 这个操作会给我们返回一个IntSummaryStatistics对象, 其中包括了: count(数量), sum(总和), min(最小值), max(最大值), average(平均值). 类似的操作有summarizingLong, summarizingDouble. 上代码<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//输出: 20.0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>summarizingInt: 这个操作会给我们返回一个IntSummaryStatistics对象, 其中包括了: count(数量), sum(总和), min(最小值), max(最大值), average(平均值). 类似的操作有summarizingLong, summarizingDouble. 上代码</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">summarizingIntTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -784,8 +893,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
         <span class="token comment">//min: 19</span>
         <span class="token comment">//max: 21</span>
         <span class="token comment">//average: 20.0</span>
-    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>toMap操作: 将流转换为Map, 上代码.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li>toMap操作: 将流转换为Map, 上代码.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">toMapTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -806,8 +918,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">//终端输出: &#123;Joe=Person&#123;name='Joe', age=20, single=false&#125;, Frankly=Person&#123;name='Frankly', age=21, single=true&#125;, Michale=Person&#123;name='Michale', age=19, single=true&#125;, Lily=Person&#123;name='Lily', age=20, single=false&#125;&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>toMap注意事项: 如果使用toMap操作的话, 有一点需要注意的, 就是key发生重复的时候, 会抛出异常, 下面我们就来看看, 如何解决这个异常. 上代码.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token comment">//终端输出: &#123;Joe=Person&#123;name='Joe', age=20, single=false&#125;, Frankly=Person&#123;name='Frankly', age=21, single=true&#125;, Michale=Person&#123;name='Michale', age=19, single=true&#125;, Lily=Person&#123;name='Lily', age=20, single=false&#125;&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>toMap注意事项: 如果使用toMap操作的话, 有一点需要注意的, 就是key发生重复的时候, 会抛出异常, 下面我们就来看看, 如何解决这个异常. 上代码.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">toMapSolutionTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -828,7 +943,8 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
     <span class="token punctuation">&#125;</span>
 
 <span class="token comment">//终端报错java.lang.IllegalStateException: Duplicate key Person&#123;name='Joe', age=20, single=false&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-在上面那个例子中, 我们key值发生了重复并没有处理, 所以运行起来就直接抛异常了. 异常信息告诉我们key值发生了重复, 接下来就来看看这个问题怎么解决吧, 其实很简单, toMap提供了对应的解决方案.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<p>在上面那个例子中, 我们key值发生了重复并没有处理, 所以运行起来就直接抛异常了. 异常信息告诉我们key值发生了重复, 接下来就来看看这个问题怎么解决吧, 其实很简单, toMap提供了对应的解决方案.</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">toMapSolutionTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -868,8 +984,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
                                 <span class="token class-name">Person</span><span class="token operator">::</span><span class="token function">getName</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token class-name">Person</span> person<span class="token punctuation">)</span> <span class="token operator">-></span> person<span class="token punctuation">,</span> <span class="token punctuation">(</span>prePerson<span class="token punctuation">,</span> replacement<span class="token punctuation">)</span> <span class="token operator">-></span> replacement<span class="token punctuation">,</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">::</span><span class="token keyword">new</span>
                         <span class="token punctuation">)</span>
                 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>map2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>groupingBy操作: 我们可以通过groupingBy操作对集合进行分组. 上代码.<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>map2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li>groupingBy操作: 我们可以通过groupingBy操作对集合进行分组. 上代码.</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">void</span> <span class="token function">groupingByTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> personList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Person</span> michale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Michale"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -903,8 +1022,10 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
         <span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>personGroup3<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">//输出: &#123;true=[Michale, Frankly], false=[Lily, Joe]&#125;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="彩蛋-套娃展示"><a href="#彩蛋-套娃展示" class="headerlink" title="彩蛋: 套娃展示"></a>彩蛋: 套娃展示</h3></li>
-<li>GroupUser class<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GroupUser</span> <span class="token punctuation">&#123;</span>
+<h3 id="彩蛋-套娃展示"><a href="#彩蛋-套娃展示" class="headerlink" title="彩蛋: 套娃展示"></a>彩蛋: 套娃展示</h3><ol>
+<li>GroupUser class</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GroupUser</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> groupId<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">String</span> groupName<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">Integer</span> userId<span class="token punctuation">;</span>
@@ -972,8 +1093,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
                 <span class="token string">", username='"</span> <span class="token operator">+</span> username <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
                 <span class="token string">", email='"</span> <span class="token operator">+</span> email <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
                 <span class="token string">'&#125;'</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>NicknameGenerator class<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NicknameGenerator</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>NicknameGenerator class</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NicknameGenerator</span> <span class="token punctuation">&#123;</span>
 
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">char</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> chars <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'m'</span><span class="token punctuation">,</span> <span class="token string">'n'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'t'</span><span class="token punctuation">,</span> <span class="token string">'u'</span><span class="token punctuation">,</span> <span class="token string">'v'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> <span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'z'</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
@@ -997,8 +1121,11 @@ PS: 有一个骚操作那就是分页, 我们可以通过使用流的skip()和li
         <span class="token punctuation">&#125;</span>
         builder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"@gmail.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> builder<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>程序入口: HelloWorld.java<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>程序入口: HelloWorld.java</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">GroupUser</span><span class="token punctuation">></span></span> groupUserList <span class="token operator">=</span> <span class="token function">getGroupUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">LinkedHashMap</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">GroupUser</span><span class="token punctuation">></span><span class="token punctuation">></span></span> mergeResult <span class="token operator">=</span> groupUserList<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1045,9 +1172,7 @@ key<span class="token operator">:</span> <span class="token number">1851516</spa
 key<span class="token operator">:</span> <span class="token number">75827840</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token class-name">GroupUser</span><span class="token punctuation">&#123;</span>groupId<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> groupName<span class="token operator">=</span><span class="token string">'ABQ2'</span><span class="token punctuation">,</span> userId<span class="token operator">=</span><span class="token number">75827840</span><span class="token punctuation">,</span> username<span class="token operator">=</span><span class="token string">'sfnrw'</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">'jarstnelus@gmail.com'</span><span class="token punctuation">&#125;</span>
 key<span class="token operator">:</span> <span class="token number">14683253</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token class-name">GroupUser</span><span class="token punctuation">&#123;</span>groupId<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> groupName<span class="token operator">=</span><span class="token string">'ABQ3'</span><span class="token punctuation">,</span> userId<span class="token operator">=</span><span class="token number">14683253</span><span class="token punctuation">,</span> username<span class="token operator">=</span><span class="token string">'cvk'</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">'pdfgpppgnb@gmail.com'</span><span class="token punctuation">&#125;</span>
 key<span class="token operator">:</span> <span class="token number">75072182</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token class-name">GroupUser</span><span class="token punctuation">&#123;</span>groupId<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> groupName<span class="token operator">=</span><span class="token string">'ABQ3'</span><span class="token punctuation">,</span> userId<span class="token operator">=</span><span class="token number">75072182</span><span class="token punctuation">,</span> username<span class="token operator">=</span><span class="token string">'gogtq'</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">'zrdvmpsvse@gmail.com'</span><span class="token punctuation">&#125;</span>
-key<span class="token operator">:</span> <span class="token number">63658891</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token class-name">GroupUser</span><span class="token punctuation">&#123;</span>groupId<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> groupName<span class="token operator">=</span><span class="token string">'ABQ3'</span><span class="token punctuation">,</span> userId<span class="token operator">=</span><span class="token number">63658891</span><span class="token punctuation">,</span> username<span class="token operator">=</span><span class="token string">'o'</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">'napbtjbemo@gmail.com'</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-
+key<span class="token operator">:</span> <span class="token number">63658891</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token class-name">GroupUser</span><span class="token punctuation">&#123;</span>groupId<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> groupName<span class="token operator">=</span><span class="token string">'ABQ3'</span><span class="token punctuation">,</span> userId<span class="token operator">=</span><span class="token number">63658891</span><span class="token punctuation">,</span> username<span class="token operator">=</span><span class="token string">'o'</span><span class="token punctuation">,</span> email<span class="token operator">=</span><span class="token string">'napbtjbemo@gmail.com'</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1595,7 +1720,7 @@ key<span class="token operator">:</span> <span class="token number">63658891</sp
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card">
+        <div class="toc-widget card" style="background-color: transparent;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>

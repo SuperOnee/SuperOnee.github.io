@@ -562,7 +562,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"java","value":9},{"name":"英语","value":5},{"name":"golang","value":12},{"name":"数据库","value":3},{"name":"intellij idea","value":1}],
+                data: [{"name":"英语","value":5},{"name":"java","value":9},{"name":"golang","value":12},{"name":"数据库","value":3},{"name":"intellij idea","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -717,16 +717,16 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/aop/">
-                <span class="chip center-align waves-effect waves-light chip-default">aop</span>
-            </a>
-            
-            
-            
             
             
             <a href="/tags/%E7%BF%BB%E5%94%B1/">
                 <span class="chip center-align waves-effect waves-light chip-default">翻唱</span>
+            </a>
+            
+            
+            
+            <a href="/tags/aop/">
+                <span class="chip center-align waves-effect waves-light chip-default">aop</span>
             </a>
             
             
@@ -1346,6 +1346,7 @@ $(function () {
     <script src="/js/FunnyTitle.js"></script>
     <script src="/js/clickEffect.js"></script>
     <script src="/js/typingEffect.js"></script>
+    <script src="/js/fireworks.js"></script>
 
     <!-- Baidu Analytics -->
 
@@ -1579,6 +1580,16 @@ $(function () {
                 });
             </script>
             
+    
+
+    
+        <script>
+            $('.bg-cover').fireworks({ 
+                opacity: 0.5, 
+                width: '100%', 
+                height: '100%'
+            });
+        </script>
     
 
     

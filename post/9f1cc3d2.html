@@ -561,8 +561,11 @@ A(Ser)        B(Ser)        是否互斥        原因
 写            读             互斥          A排他锁 B共享锁
 读            写             互斥          A共享锁 B排他锁
 写            写             互斥          A排他锁 B排他锁</code></pre>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/2.png"></p>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/3.png"></p>
+<img src="https://c242p8.coding-pages.com/images/database/mysql/lock/2.png" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/2.png" class="img-shadow img-margin">
+
+
+<img src="https://c242p8.coding-pages.com/images/database/mysql/lock/3.png" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/3.png" class="img-shadow img-margin">
+
 <h3 id="更新丢失"><a href="#更新丢失" class="headerlink" title="更新丢失"></a>更新丢失</h3><p>并发的2个事务基于同一个查询结果对数据库进行更新操作，后提交的事务忽略了先提交的事务对数据库造成的影响，因此造成的问题称为“更新丢失”。</p>
 <p>更新丢失的解决方案：</p>
 <p>数据库如果使用Serializable级别，可以天然防止更新丢失，但是对业务的执行效率会有较大的影响。</p>
@@ -581,8 +584,9 @@ A(Ser)        B(Ser)        是否互斥        原因
 <li>如果当前业务的查询多，更新少，优先使用乐观锁</li>
 <li>如果当前业务的查询少，更新多，优先使用悲观锁</li>
 </ol>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/4.png"></p>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/5.png"></p>
+<img src="https://c242p8.coding-pages.com/images/database/mysql/lock/4.png" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/4.png" class="img-shadow img-margin">
+
+<img src="https://c242p8.coding-pages.com/images/database/mysql/lock/5.png" data-original="https://c242p8.coding-pages.com/images/database/mysql/lock/5.png" class="img-shadow img-margin">
 
                 
             </div>

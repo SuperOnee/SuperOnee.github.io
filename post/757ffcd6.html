@@ -532,7 +532,7 @@
                 <h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3><p>数据库持久层访问框架使用SpringDataJpa, 只需要创建实体类即可, 框架会自动生成表.<br>数据库表创建完后关系图如下: </p>
 <a id="more"></a>
 
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/security/pic1.png"></p>
+<img src="https://c242p8.coding-pages.com/images/spring/security/pic1.png" data-original="https://c242p8.coding-pages.com/images/spring/security/pic1.png" class="img-shadow img-margin">
 <h3 id="初步准备"><a href="#初步准备" class="headerlink" title="初步准备"></a>初步准备</h3><ol>
 <li>准备pom依赖</li>
 </ol>
@@ -879,9 +879,11 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>现在启动项目进行测试, 项目启动后可以看到控制台会出现security自动生成的密码, 默认的用户名是: user</p>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/security/pic2.png"></p>
+<img src="https://c242p8.coding-pages.com/images/spring/security/pic2.png" data-original="https://c242p8.coding-pages.com/images/spring/security/pic2.png" class="img-shadow img-margin">
+
 <p>打开游览器请求add接口. 因为引入了security的依赖, 这时候需要登陆才能访问接口</p>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/security/pic3.png"></p>
+<img src="https://c242p8.coding-pages.com/images/spring/security/pic3.png" data-original="https://c242p8.coding-pages.com/images/spring/security/pic3.png" class="img-shadow img-margin">
+
 <p>依次输入用户名和密码, 用户名为user, 密码为security生成的密码. 点击sign in按钮后即可请求接口.</p>
 <h3 id="实现权限校验"><a href="#实现权限校验" class="headerlink" title="实现权限校验"></a>实现权限校验</h3><ol>
 <li>实现Security的UserDetailsService</li>

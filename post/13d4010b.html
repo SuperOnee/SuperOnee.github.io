@@ -561,7 +561,10 @@
 	engine<span class="token punctuation">.</span><span class="token function">Use</span><span class="token punctuation">(</span><span class="token function">Logger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Recovery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 	<span class="token keyword">return</span> engine
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>原理:<br><br><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/gin/pic1.png"></p>
+<p>原理:<br></p>
+<img src="https://c242p8.coding-pages.com/images/gin/pic1.png" data-original="https://c242p8.coding-pages.com/images/gin/pic1.png" class="img-shadow img-margin">
+
+
 <h3 id="Gin的路由"><a href="#Gin的路由" class="headerlink" title="Gin的路由"></a>Gin的路由</h3><h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>Get 获取Get参数 <code>name := context.Query(&quot;name&quot;)</code></p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
    app <span class="token operator">:=</span> gin<span class="token punctuation">.</span><span class="token function">Default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -910,9 +913,15 @@
 	<span class="token punctuation">&#125;</span>
 	context<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span>StatusOK<span class="token punctuation">,</span> <span class="token string">"Success"</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>测试结果如下: <br><br><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/gin/pic2.png"><br><br><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/gin/pic3.png"><br></p>
+<p>测试结果如下: <br></p>
+<img src="https://c242p8.coding-pages.com/images/gin/pic2.png" data-original="https://c242p8.coding-pages.com/images/gin/pic2.png" class="img-shadow img-margin"><br>
+<img src="https://c242p8.coding-pages.com/images/gin/pic3.png" data-original="https://c242p8.coding-pages.com/images/gin/pic3.png" class="img-shadow img-margin"><br>
+
 <p><code>只会绑定query String, 表单的数据被忽略了</code></p>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/gin/pic4.png"><br><br><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/gin/pic5.png"><br></p>
+<img src="https://c242p8.coding-pages.com/images/gin/pic4.png" data-original="https://c242p8.coding-pages.com/images/gin/pic4.png" class="img-shadow img-margin"><br>
+<img src="https://c242p8.coding-pages.com/images/gin/pic5.png" data-original="https://c242p8.coding-pages.com/images/gin/pic5.png" class="img-shadow img-margin"><br>
+
+
 <p>Godoc: <a target="_blank" rel="noopener" href="https://godoc.org/">https://godoc.org/</a></p>
 
                 

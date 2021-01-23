@@ -690,7 +690,9 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>typedTuple<span class="token punctuation">.</span><span class="token function">getScore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>windows打开redisDesktopManager我们可以看到key和value是这样的<br><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/springdataredis/pic1.png"></p>
+<p>windows打开redisDesktopManager我们可以看到key和value是这样的</p>
+<img src="https://c242p8.coding-pages.com/images/spring/springdataredis/pic1.png" data-original="https://c242p8.coding-pages.com/images/spring/springdataredis/pic1.png" class="img-shadow img-margin">
+
 <p>现在将key的序列化改为String</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">redisTemplateTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -717,7 +719,7 @@
 <span class="token comment">//user1 = User&#123;id='b9e98108-7575-46b6-ac81-574d27603d89', username='nathan', age=18&#125;</span>
 <span class="token comment">//org.springframework.data.redis.serializer.StringRedisSerializer@29f38091</span>
 <span class="token comment">//可以看到keySerializer已经变更为StringRedisSerializer了</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/springdataredis/pic2.png"></p>
+<img src="https://c242p8.coding-pages.com/images/spring/springdataredis/pic2.png" data-original="https://c242p8.coding-pages.com/images/spring/springdataredis/pic2.png" class="img-shadow img-margin">
 <h3 id="BoundOperation-绑定操作"><a href="#BoundOperation-绑定操作" class="headerlink" title="BoundOperation(绑定操作)"></a>BoundOperation(绑定操作)</h3><p>为了方便特定场景下的操作, springData提供了BoundOperations</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>

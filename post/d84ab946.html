@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Golang之匿名函数和闭包, Nathan&#39;s Blog">
+    <meta name="keywords" content="MacOS搭建Docker环境, Nathan&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Golang之匿名函数和闭包 | Nathan&#39;s Blog</title>
+    <title>MacOS搭建Docker环境 | Nathan&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -261,12 +261,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/golang/thumbnail.jpg');filter: brightness(0.8);">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/docker/thumbnail.png');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Golang之匿名函数和闭包</h1>
+                    <h1 class="description center-align post-title">MacOS搭建Docker环境</h1>
                 </div>
             </div>
         </div>
@@ -460,12 +460,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/golang/">
-                                <span class="chip bg-color">golang</span>
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
                             </a>
                         
-                            <a href="/tags/%E5%85%A5%E9%97%A8/">
-                                <span class="chip bg-color">入门</span>
+                            <a href="/tags/mac/">
+                                <span class="chip bg-color">mac</span>
                             </a>
                         
                     </div>
@@ -476,8 +476,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/golang/" class="post-category">
-                                golang
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
                             </a>
                         
                     </div>
@@ -489,7 +489,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-09
+                    2021-01-31
                 </div>
                 
 
@@ -498,14 +498,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    321
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    9 分
                 </div>
                 
 
@@ -529,57 +529,241 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="学习golang匿名函数和闭包"><a href="#学习golang匿名函数和闭包" class="headerlink" title="学习golang匿名函数和闭包"></a>学习golang匿名函数和闭包</h3><h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>函数内部没有办法声明有名字的函数就是匿名函数</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 匿名函数</span>
+                <h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><p>Docker 是一个开源的应用容器引擎, 让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中, 然后发布到任何流行的 Linux或Windows 机器上, 也可以实现虚拟化. 容器是完全使用沙箱机制, 相互之间不会有任何接口.</p>
+<p>安装步骤非常简单. </p>
+<ol>
+<li>首先进入<a target="_blank" rel="noopener" href="https://www.docker.com/">docker官网</a>找到适合自己的版本后点击下载. </li>
+</ol>
+<img src="https://c242p8.coding-pages.com/images/docker/pics/pic1.png" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic1.png" class="img-shadow img-margin">
 
-<span class="token keyword">var</span> f1 <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+<ol start="2">
+<li><p>下载完后进行docker的安装, 安装完后就可以启动docker了. </p>
+</li>
+<li><p>安装完Docker后打开终端输入docker. 看到终端返回内容如下表示安装成功.</p>
+</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Usage:  docker <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> COMMAND
 
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	<span class="token function">f1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-	<span class="token comment">//函数内部没有办法声明有名字的函数</span>
-	f1 <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token function">f1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+A self-sufficient runtime <span class="token keyword">for</span> containers
 
-	<span class="token comment">//如果只是调用一次的函数, 还可以简写成立即执行函数</span>
-	<span class="token keyword">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<a id="more"></a>
-<h4 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h4><p>因为在golang中函数是可以作为参数使用的, 当一个函数的参数需要一个无参数的函数时, 我们想传一个有参的函数进去此时就要用到闭包.</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 闭包</span>
+Options:
+      --config string      Location of client config files <span class="token punctuation">(</span>default <span class="token string">"/Users/spongebob/.docker"</span><span class="token punctuation">)</span>
+  -c, --context string     Name of the context to use to connect to the daemon <span class="token punctuation">(</span>overrides DOCKER_HOST
+                           <span class="token function">env</span> var and default context <span class="token builtin class-name">set</span> with <span class="token string">"docker context use"</span><span class="token punctuation">)</span>
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket<span class="token punctuation">(</span>s<span class="token punctuation">)</span> to connect to
+  -l, --log-level string   Set the logging level <span class="token punctuation">(</span><span class="token string">"debug"</span><span class="token operator">|</span><span class="token string">"info"</span><span class="token operator">|</span><span class="token string">"warn"</span><span class="token operator">|</span><span class="token string">"error"</span><span class="token operator">|</span><span class="token string">"fatal"</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>default <span class="token string">"info"</span><span class="token punctuation">)</span>
+      --tls                Use TLS<span class="token punctuation">;</span> implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA <span class="token punctuation">(</span>default <span class="token string">"/Users/spongebob/.docker/ca.pem"</span><span class="token punctuation">)</span>
+      --tlscert string     Path to TLS certificate <span class="token function">file</span> <span class="token punctuation">(</span>default <span class="token string">"/Users/spongebob/.docker/cert.pem"</span><span class="token punctuation">)</span>
+      --tlskey string      Path to TLS key <span class="token function">file</span> <span class="token punctuation">(</span>default <span class="token string">"/Users/spongebob/.docker/key.pem"</span><span class="token punctuation">)</span>
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
 
-<span class="token comment">//f1 函数要求的参数是无参的函数</span>
-<span class="token keyword">func</span> <span class="token function">f1</span><span class="token punctuation">(</span>f <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"this is f1"</span><span class="token punctuation">)</span>
-	<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+Management Commands:
+  app*        Docker App <span class="token punctuation">(</span>Docker Inc., unknown<span class="token punctuation">)</span>
+  builder     Manage builds
+  buildx*     Build with BuildKit <span class="token punctuation">(</span>Docker Inc., v0.5.1-docker<span class="token punctuation">)</span>
+  checkpoint  Manage checkpoints
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan <span class="token punctuation">(</span>Docker Inc., v0.3.5<span class="token punctuation">)</span>
+  secret      Manage Docker secrets
+  <span class="token function">service</span>     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
 
-<span class="token comment">//我想将f2传进去, 此时会报错, 所以我们需要闭包</span>
-<span class="token keyword">func</span> <span class="token function">f2</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"this is f2"</span><span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+Commands:
+  attach      Attach <span class="token builtin class-name">local</span> standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container<span class="token string">'s changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container'</span>s filesystem
+  events      Get real <span class="token function">time</span> events from the server
+  <span class="token builtin class-name">exec</span>        Run a <span class="token builtin class-name">command</span> <span class="token keyword">in</span> a running container
+  <span class="token builtin class-name">export</span>      Export a container<span class="token string">'s filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
 
-<span class="token comment">//此时定义一个f3函数, 对f2进行包装, f3返回的是无参函数, 正好满足f1的需求</span>
-<span class="token keyword">func</span> <span class="token function">f3</span><span class="token punctuation">(</span>f <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m<span class="token punctuation">,</span> n <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	temp <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token function">f</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"this is f3"</span><span class="token punctuation">)</span>
-	<span class="token keyword">return</span> temp
-<span class="token punctuation">&#125;</span>
+Run '</span>docker COMMAND --help' <span class="token keyword">for</span> <span class="token function">more</span> information on a command.
 
+To get <span class="token function">more</span> <span class="token builtin class-name">help</span> with docker, check out our guides at https://docs.docker.com/go/guides/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Docker-Image和-Docker-Container"><a href="#Docker-Image和-Docker-Container" class="headerlink" title="Docker Image和 Docker Container"></a>Docker Image和 Docker Container</h3><p>Docker Image就是Docker镜像, 镜像可以是是数据库, web容器, web应用等等. Docker Container就是Docker容器, Docker容器是什么呢? 实际上就是正在运行Docker镜像实例.<br><br>接下来就看看如何下载一个 Docker 镜像. 并将其运行起来.</p>
+<ol>
+<li><p>打开<a target="_blank" rel="noopener" href="https://hub.docker.com/_/nginx">Docker hub</a>往下滑动找到对应的Docker Nginx镜像</p>
+</li>
+<li><p>在页面的右侧能看到对应的终端指令, 将其复制粘贴到终端. </p>
+</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker pull nginx
 
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	f <span class="token operator">:=</span> <span class="token function">f3</span><span class="token punctuation">(</span>f2<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
-	<span class="token function">f1</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 敲完回车后终端会打印如下内容: </span>
+Using default tag: latest <span class="token comment"># 如果没有指定tag的话默认就是latest, 这里的Tag就是版本.</span>
+latest: Pulling from library/nginx
+f8be76fcf206: Pull complete 
+56d3a31c1999: Pull complete 
+61e3132252c9: Pull complete 
+703916d761e9: Pull complete 
+53e819da52d9: Pull complete 
+Digest: sha256:10b8cc432d56da8b61b070f4c7d2543a9ed17c2b23010b43af434fd40e2ca4aa
+Status: Downloaded newer image <span class="token keyword">for</span> nginx:latest
+docker.io/library/nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>安装完nginx后, 使用docker images命令查看镜像是否已经安装.</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker images
+<span class="token comment"># 终端打印内容如下: </span>
+<span class="token comment"># 镜像源      #版本      #镜像id        #创建时间      #大小</span>
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+<span class="token comment"># 可以看到nginx已经被安装了.</span>
+nginx        latest    9b016c5aa4e8   <span class="token number">2</span> weeks ago   126MB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>将nginx在docker中运行起来.</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># :冒号后面的latest为Tag也就是版本.</span>
+docker run nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>输入完命令后, 可以发现终端被阻塞住了, 不能敲命令了, 并且打开docker dashboard后可以看到nginx的状态是running的也就是处于运行状态.</code></p>
+<img src="https://c242p8.coding-pages.com/images/docker/pics/pic2.png" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic2.png" class="img-shadow img-margin">
+
+<p>原因是: <code>因为没有指定nginx在后台运行.</code></p>
+<ol start="5">
+<li>使用命令查看正在运行的镜像实例.</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$~ docker container <span class="token function">ls</span>
+<span class="token comment"># 可以看到nginx正是处于运行的状态</span>
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+3a19643c7f12   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">5</span> minutes ago   Up <span class="token number">5</span> minutes   <span class="token number">80</span>/tcp    nice_vaughan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>使nginx在后台运行</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run -d nginx:latest <span class="token comment"># -d表示 detach mode也就是在后台运行</span>
+
+bf05c0c930ab116fb66a7b4c07efcc161218729b736f9629b663061f0cb1ad71<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>docker container ls</code> 命令可以使用 <code>docker ps</code>代替.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">ps</span> <span class="token comment">#效果是和docker container ls一样的.</span>
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS     NAMES
+bf05c0c930ab   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">47</span> seconds ago   Up <span class="token number">26</span> seconds   <span class="token number">80</span>/tcp    fervent_yalow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="将端口暴露"><a href="#将端口暴露" class="headerlink" title="将端口暴露"></a>将端口暴露</h3><p>上面虽然将nginx运行起来了, 但是docker是隔离运行的, 端口没有暴露出来是不能够访问的, 所以需要将端口暴露出来.</p>
+<ol>
+<li>先将原先运行的nginx停止</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker stop bf05c0c930ab <span class="token comment">#使用docker stop将容器停止, 后面的一串为容器id, 使用docker ps命令可以看到container id就是它.</span>
+bf05c0c930ab<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>将nginx的端口暴露, 并且映射端口8080<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run -d -p <span class="token number">8080</span>:80 nginx:latest <span class="token comment"># 使用-p指定暴露的端口</span>
+
+87daf4cb13ff070921f63ce6400b4a5ca8c1fd9efa4f90fde82d5ce68bf50e70<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li>启动完后, 打开游览器访问<code>localhost:8080</code>将会看到nginx的页面.</li>
+</ol>
+<img src="https://c242p8.coding-pages.com/images/docker/pics/pic3.png" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic3.png" class="img-shadow img-margin">
+
+<ol start="4">
+<li>映射多个端口号</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run -d -p <span class="token number">8080</span>:80 -p <span class="token number">3000</span>:80 nginx:latest
+
+5ef41fe3a3d7b826d311c8ad7973e9690cefae2765df827d8b07118490ba1890
+
+<span class="token comment">#输入docker ps查看映射的端口</span>
+docker <span class="token function">ps</span>
+<span class="token comment">#按下回车后可以看到 port 映射了两个.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Container的管理"><a href="#Container的管理" class="headerlink" title="Container的管理"></a>Container的管理</h3><p>输入docker ps查看正在运行的container.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#可以看到最后有一个names的属性, 可以使用gifted_hawking将container停止掉.</span>
+docker <span class="token function">ps</span>   
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                        NAMES
+5ef41fe3a3d7   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">5</span> minutes ago   Up <span class="token number">5</span> minutes   <span class="token number">0.0</span>.0.0:3000-<span class="token operator">></span><span class="token number">80</span>/tcp, <span class="token number">0.0</span>.0.0:8080-<span class="token operator">></span><span class="token number">80</span>/tcp   gifted_hawking
+
+docker stop gifted_hawking                           
+gifted_hawking <span class="token comment">#此时对应的容器已经被停止了</span>
+
+<span class="token comment"># 我们也可以使用docker start gifted_hawking将其重新启动.</span>
+docker start gifted_hawking
+
+gifted_hawking
+
+<span class="token comment"># 通过name启动的容器没有指定端口. 但实际上是带上端口的, 也就是我们每次docker start都会创建一个容器, 可以通过docker ps -a命令查看</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用docker ps -a命令查看所有的容器.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">ps</span> -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                      PORTS                                        NAMES
+5ef41fe3a3d7   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">14</span> minutes ago   Up <span class="token number">5</span> minutes                <span class="token number">0.0</span>.0.0:3000-<span class="token operator">></span><span class="token number">80</span>/tcp, <span class="token number">0.0</span>.0.0:8080-<span class="token operator">></span><span class="token number">80</span>/tcp   gifted_hawking
+87daf4cb13ff   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">20</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">16</span> minutes ago                                                naughty_sutherland
+bf05c0c930ab   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">29</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">22</span> minutes ago                                                fervent_yalow
+3a19643c7f12   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">40</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">32</span> minutes ago                                                nice_vaughan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对创建出来的容器进行管理, 将指定容器删除.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#删除容器可以使用id或者是name</span>
+docker <span class="token function">rm</span> nice_vaughan                          
+nice_vaughan
+<span class="token comment">#回车后执行docker ps -a后可以看到对应的容器已经被删除.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>使用一行命令将所有container删除掉</code></p>
+<ol>
+<li>首先需要获取到所有container的id</li>
+</ol>
+<p>使用docker ps -a可以获取到所有的容器. 如果需要获取所有的容器id只需要加一个q就行了</p>
+<p>具体命令如下</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">ps</span> -aq <span class="token comment">#获取所有的容器id</span>
+5ef41fe3a3d7
+87daf4cb13ff
+bf05c0c930ab
+
+<span class="token comment">#获取到了id后怎么将其全部删除呢? </span>
+<span class="token comment"># 将获取到的内容像参数出传递一般传入到方法中即可.</span>
+
+docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span>  <span class="token comment">#$(括号内为参数)</span>
+
+5ef41fe3a3d7
+87daf4cb13ff
+bf05c0c930ab
+
+<span class="token comment">#执行完上面的命令后, 再执行docker ps -a 后可以看到所有的container已经被清空了.</span>
+
+<span class="token comment">#如果有container正在运行的话, 执行docker rm $(docker ps -aq)就会报错.</span>
+
+<span class="token comment">#如果一定要移出的话只能使用强制移出. 命令如下: </span>
+docker <span class="token function">rm</span> -f <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span> <span class="token comment">#加上-f就可以完成强制移出.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Container命名"><a href="#Container命名" class="headerlink" title="Container命名"></a>Container命名</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run --name website -d -p <span class="token number">8080</span>:80 -p <span class="token number">3000</span>:80 nginx:latest <span class="token comment"># 使用--name即可指定container的名字, 这里容器的名字为website.</span>
+
+<span class="token comment"># 使用名字将container停止.</span>
+docker stop website
+website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -605,7 +789,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://nathan98.gitee.io/post/4ac7360d.html">https://nathan98.gitee.io/post/4ac7360d.html</a>
+                    <a href="https://nathan98.gitee.io/post/d84ab946.html">https://nathan98.gitee.io/post/d84ab946.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -643,12 +827,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/golang/">
-                                    <span class="chip bg-color">golang</span>
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
                                 </a>
                             
-                                <a href="/tags/%E5%85%A5%E9%97%A8/">
-                                    <span class="chip bg-color">入门</span>
+                                <a href="/tags/mac/">
+                                    <span class="chip bg-color">mac</span>
                                 </a>
                             
                         </div>
@@ -968,49 +1152,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/post/46934849.html">
+                <a href="/post/d84ab946.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/golang/thumbnail.jpg" class="responsive-img" alt="Golang之Defer函数">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/thumbnail.png" class="responsive-img" alt="MacOS搭建Docker环境">
                         
-                        <span class="card-title">Golang之Defer函数</span>
+                        <span class="card-title">MacOS搭建Docker环境</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            学习golang Defer函数Deferdefer 多用于函数结束之前释放资源 (文件句柄, 数据库链接, socket链接)Go语言中函数的return不是原子操作, 在底层是分为两步来执行.第一步: 返回值复制 defer 第二步: 
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%A5%E9%97%A8/">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/mac/">
+                        <span class="chip bg-color">mac</span>
                     </a>
                     
                 </div>
@@ -1024,30 +1210,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/post/ae5a1ffc.html">
+                <a href="/post/1380e7fc.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/golang/thumbnail.jpg" class="responsive-img" alt="Golang之函数">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/jwt/thumbnail.png" class="responsive-img" alt="springBoot整合JWT+Security">
                         
-                        <span class="card-title">Golang之函数</span>
+                        <span class="card-title">springBoot整合JWT+Security</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            JsonWebToken此博文延续了之前的Security进行整合的. 
+简介JWT英文全写为JSON WEB TOKENS.由于http协议是无状态的,所以客户端每次访问都是新的请求. 这样每次请求都需要验证身份, 传统方式是用sessi
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
+                            <a href="/categories/java/" class="post-category">
+                                    java
                                 </a>
                             
                             
@@ -1057,12 +1244,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
+                    <a href="/tags/jpa/">
+                        <span class="chip bg-color">jpa</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%A5%E9%97%A8/">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/%E6%A1%86%E6%9E%B6/">
+                        <span class="chip bg-color">框架</span>
                     </a>
                     
                 </div>

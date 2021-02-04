@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="golang gin框架从入门到入土, Nathan&#39;s Blog">
+    <meta name="keywords" content="Golang Gin框架从入门到入土, Nathan&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>golang gin框架从入门到入土 | Nathan&#39;s Blog</title>
+    <title>Golang Gin框架从入门到入土 | Nathan&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,7 +266,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="color: rgb(245, 177, 94);">golang gin框架从入门到入土</h1>
+                    <h1 class="description center-align post-title" style="color: rgb(245, 177, 94);">Golang Gin框架从入门到入土</h1>
                 </div>
             </div>
         </div>
@@ -381,16 +381,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/golang/">
-                                <span class="chip bg-color">golang</span>
+                            <a href="/tags/Golang/">
+                                <span class="chip bg-color">Golang</span>
                             </a>
                         
                             <a href="/tags/%E6%A1%86%E6%9E%B6/">
                                 <span class="chip bg-color">框架</span>
                             </a>
                         
-                            <a href="/tags/gin/">
-                                <span class="chip bg-color">gin</span>
+                            <a href="/tags/Gin/">
+                                <span class="chip bg-color">Gin</span>
                             </a>
                         
                     </div>
@@ -401,8 +401,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/golang/" class="post-category">
-                                golang
+                            <a href="/categories/Golang/" class="post-category">
+                                Golang
                             </a>
                         
                     </div>
@@ -482,10 +482,7 @@
 	engine<span class="token punctuation">.</span><span class="token function">Use</span><span class="token punctuation">(</span><span class="token function">Logger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Recovery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 	<span class="token keyword">return</span> engine
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>原理:<br></p>
-<img src="https://c242p8.coding-pages.com/images/gin/pic1.png" data-original="https://c242p8.coding-pages.com/images/gin/pic1.png" class="img-shadow img-margin">
-
-
+<p>原理:<br><br>![](<a target="_blank" rel="noopener" href="https://c242p8.coding-pages.com/images/gin/pic1.png">https://c242p8.coding-pages.com/images/gin/pic1.png</a> %}</p>
 <h3 id="Gin的路由"><a href="#Gin的路由" class="headerlink" title="Gin的路由"></a>Gin的路由</h3><h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>Get 获取Get参数 <code>name := context.Query(&quot;name&quot;)</code></p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
    app <span class="token operator">:=</span> gin<span class="token punctuation">.</span><span class="token function">Default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -834,15 +831,9 @@
 	<span class="token punctuation">&#125;</span>
 	context<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span>StatusOK<span class="token punctuation">,</span> <span class="token string">"Success"</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>测试结果如下: <br></p>
-<img src="https://c242p8.coding-pages.com/images/gin/pic2.png" data-original="https://c242p8.coding-pages.com/images/gin/pic2.png" class="img-shadow img-margin"><br>
-<img src="https://c242p8.coding-pages.com/images/gin/pic3.png" data-original="https://c242p8.coding-pages.com/images/gin/pic3.png" class="img-shadow img-margin"><br>
-
+<p>测试结果如下: <br><br>![](<a target="_blank" rel="noopener" href="https://c242p8.coding-pages.com/images/gin/pic2.png">https://c242p8.coding-pages.com/images/gin/pic2.png</a> %}<br><br>![](<a target="_blank" rel="noopener" href="https://c242p8.coding-pages.com/images/gin/pic3.png">https://c242p8.coding-pages.com/images/gin/pic3.png</a> %}<br></p>
 <p><code>只会绑定query String, 表单的数据被忽略了</code></p>
-<img src="https://c242p8.coding-pages.com/images/gin/pic4.png" data-original="https://c242p8.coding-pages.com/images/gin/pic4.png" class="img-shadow img-margin"><br>
-<img src="https://c242p8.coding-pages.com/images/gin/pic5.png" data-original="https://c242p8.coding-pages.com/images/gin/pic5.png" class="img-shadow img-margin"><br>
-
-
+<p>![](<a target="_blank" rel="noopener" href="https://c242p8.coding-pages.com/images/gin/pic4.png">https://c242p8.coding-pages.com/images/gin/pic4.png</a> %}<br><br>![](<a target="_blank" rel="noopener" href="https://c242p8.coding-pages.com/images/gin/pic5.png">https://c242p8.coding-pages.com/images/gin/pic5.png</a> %}<br></p>
 <p>Godoc: <a target="_blank" rel="noopener" href="https://godoc.org/">https://godoc.org/</a></p>
 
                 
@@ -908,16 +899,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/golang/">
-                                    <span class="chip bg-color">golang</span>
+                                <a href="/tags/Golang/">
+                                    <span class="chip bg-color">Golang</span>
                                 </a>
                             
                                 <a href="/tags/%E6%A1%86%E6%9E%B6/">
                                     <span class="chip bg-color">框架</span>
                                 </a>
                             
-                                <a href="/tags/gin/">
-                                    <span class="chip bg-color">gin</span>
+                                <a href="/tags/Gin/">
+                                    <span class="chip bg-color">Gin</span>
                                 </a>
                             
                         </div>
@@ -1244,9 +1235,9 @@
                 <a href="/post/389a94b3.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/ideaplugins/thumbnail.png" class="responsive-img" alt="intellij idea插件分享">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/ideaplugins/thumbnail.png" class="responsive-img" alt="Intellij Idea插件分享">
                         
-                        <span class="card-title">intellij idea插件分享</span>
+                        <span class="card-title">Intellij Idea插件分享</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1264,8 +1255,8 @@ Lombok在java开发中, 我们都要生成getter, setter, toString, equalsAndHas
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/intellij-idea/" class="post-category">
-                                    intellij idea
+                            <a href="/categories/Intellij-Idea/" class="post-category">
+                                    Intellij Idea
                                 </a>
                             
                             
@@ -1279,8 +1270,8 @@ Lombok在java开发中, 我们都要生成getter, setter, toString, equalsAndHas
                         <span class="chip bg-color">开发工具</span>
                     </a>
                     
-                    <a href="/tags/idea/">
-                        <span class="chip bg-color">idea</span>
+                    <a href="/tags/Idea/">
+                        <span class="chip bg-color">Idea</span>
                     </a>
                     
                     <a href="/tags/%E6%8F%92%E4%BB%B6/">
@@ -1334,8 +1325,8 @@ Lombok在java开发中, 我们都要生成getter, setter, toString, equalsAndHas
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Mysql/">
-                        <span class="chip bg-color">Mysql</span>
+                    <a href="/tags/MySql/">
+                        <span class="chip bg-color">MySql</span>
                     </a>
                     
                 </div>
@@ -1520,7 +1511,7 @@ Lombok在java开发中, 我们都要生成getter, setter, toString, equalsAndHas
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">40.9k</span>&nbsp;字
             
             
             

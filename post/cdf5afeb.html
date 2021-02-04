@@ -381,12 +381,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/jpa/">
-                                <span class="chip bg-color">jpa</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%A1%86%E6%9E%B6/">
-                                <span class="chip bg-color">框架</span>
+                            <a href="/tags/JPA/">
+                                <span class="chip bg-color">JPA</span>
                             </a>
                         
                     </div>
@@ -397,8 +393,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/java/" class="post-category">
-                                java
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                框架
                             </a>
                         
                     </div>
@@ -453,8 +453,7 @@
                 <p>使用SpringDataJpa的Critera API和Specification完成动态查询.</p>
 <h3 id="Criteria-API-使用"><a href="#Criteria-API-使用" class="headerlink" title="Criteria API 使用"></a>Criteria API 使用</h3><p><code>延续上篇security的博文, 表结构, 实体都一致. </code></p>
 <h4 id="CriteriaQuery-select操作"><a href="#CriteriaQuery-select操作" class="headerlink" title="CriteriaQuery select操作"></a>CriteriaQuery select操作</h4><p>CriteriaQuery提供了一系列的查询方法, 例如: select, multiSelect, having等. </p>
-<img src="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic1.png" data-original="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic1.png" class="img-shadow img-margin">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic1.png"></p>
 <p>使用select函数从User表中查出指定字段, 例如Username字段. </p>
 <p>实现步骤: </p>
 <ol>
@@ -880,11 +879,9 @@
 <li>配置intellij idea compiler: </li>
 </ol>
 <p>具体步骤: settings -&gt; Build, Execution, Deployment -&gt; compiler -&gt; Annotation Processors 将 Enable annotation processing 和 Obtain processors from project classpath 选上.</p>
-<img src="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic2.png" data-original="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic2.png" class="img-shadow img-margin">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic2.png"></p>
 <p>build project后便会在target下看到相应文件夹. 点开generated-sources后便会看到生成的metaModel.</p>
-<img src="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic3.png" data-original="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic3.png" class="img-shadow img-margin">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/jpaspecification/pic3.png"></p>
 <h4 id="MetaModel的使用"><a href="#MetaModel的使用" class="headerlink" title="MetaModel的使用"></a>MetaModel的使用</h4><p><code>生成的MetaModel就是类名 + _. 使用: User_.ID</code></p>
 <p>上面的例子在属性传递的时候都是传递的属性名, 现在使用metaModel. </p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
@@ -982,8 +979,10 @@
     <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"#&#123;target.username&#125;"</span><span class="token punctuation">)</span>
     <span class="token class-name">String</span> <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="ENTITYMANAGER执行sql"><a href="#ENTITYMANAGER执行sql" class="headerlink" title="ENTITYMANAGER执行sql"></a>ENTITYMANAGER执行sql</h4><blockquote><p>除了在Repository接口中自定义sql外, entityManager也可以执行自定义sql. 这里就不进行演示了.</p>
+<h4 id="ENTITYMANAGER执行sql"><a href="#ENTITYMANAGER执行sql" class="headerlink" title="ENTITYMANAGER执行sql"></a>ENTITYMANAGER执行sql</h4><blockquote>
+<p>除了在Repository接口中自定义sql外, entityManager也可以执行自定义sql. 这里就不进行演示了.</p>
 </blockquote>
+
                 
             </div>
             <hr/>
@@ -1047,12 +1046,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/jpa/">
-                                    <span class="chip bg-color">jpa</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%A1%86%E6%9E%B6/">
-                                    <span class="chip bg-color">框架</span>
+                                <a href="/tags/JPA/">
+                                    <span class="chip bg-color">JPA</span>
                                 </a>
                             
                         </div>
@@ -1379,9 +1374,9 @@
                 <a href="/post/1380e7fc.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/jwt/thumbnail.png" class="responsive-img" alt="springBoot整合JWT+Security">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/jwt/thumbnail.png" class="responsive-img" alt="SpringBoot整合JWT+Security">
                         
-                        <span class="card-title">springBoot整合JWT+Security</span>
+                        <span class="card-title">SpringBoot整合JWT+Security</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1399,8 +1394,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category">
-                                    java
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
                                 </a>
                             
                             
@@ -1410,8 +1405,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/jpa/">
-                        <span class="chip bg-color">jpa</span>
+                    <a href="/tags/JWT/">
+                        <span class="chip bg-color">JWT</span>
                     </a>
                     
                     <a href="/tags/%E6%A1%86%E6%9E%B6/">
@@ -1432,9 +1427,9 @@
                 <a href="/post/757ffcd6.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="springBoot整合Security权限校验">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="SpringBoot整合Security权限校验">
                         
-                        <span class="card-title">springBoot整合Security权限校验</span>
+                        <span class="card-title">SpringBoot整合Security权限校验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1451,8 +1446,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category">
-                                    java
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
                                 </a>
                             
                             
@@ -1466,8 +1461,8 @@
                         <span class="chip bg-color">框架</span>
                     </a>
                     
-                    <a href="/tags/springSecurity/">
-                        <span class="chip bg-color">springSecurity</span>
+                    <a href="/tags/SpringSecurity/">
+                        <span class="chip bg-color">SpringSecurity</span>
                     </a>
                     
                 </div>
@@ -1652,7 +1647,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">40.9k</span>&nbsp;字
             
             
             

@@ -381,12 +381,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
                             </a>
                         
-                            <a href="/tags/mac/">
-                                <span class="chip bg-color">mac</span>
+                            <a href="/tags/Mac/">
+                                <span class="chip bg-color">Mac</span>
                             </a>
                         
                     </div>
@@ -455,7 +455,7 @@
 <ol>
 <li>首先进入<a target="_blank" rel="noopener" href="https://www.docker.com/">docker官网</a>找到适合自己的版本后点击下载. </li>
 </ol>
-<img src="https://c242p8.coding-pages.com/images/docker/pics/pic1.png" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic1.png" class="img-shadow img-margin">
+<img src="/loading.gif" data-original="/images/docker/pics/pic1.png" class="">
 
 <ol start="2">
 <li><p>下载完后进行docker的安装, 安装完后就可以启动docker了. </p>
@@ -583,7 +583,7 @@ nginx        latest    9b016c5aa4e8   <span class="token number">2</span> weeks 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># :冒号后面的latest为Tag也就是版本.</span>
 docker run nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>输入完命令后, 可以发现终端被阻塞住了, 不能敲命令了, 并且打开docker dashboard后可以看到nginx的状态是running的也就是处于运行状态.</code></p>
-<img src="https://c242p8.coding-pages.com/images/docker/pics/pic2.png" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic2.png" class="img-shadow img-margin">
+<img src="/loading.gif" data-original="/images/docker/pics/pic2.png" class="">
 
 <p>原因是: <code>因为没有指定nginx在后台运行.</code></p>
 <ol start="5">
@@ -603,7 +603,7 @@ bf05c0c930ab116fb66a7b4c07efcc161218729b736f9629b663061f0cb1ad71<span aria-hidde
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">ps</span> <span class="token comment">#效果是和docker container ls一样的.</span>
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS     NAMES
 bf05c0c930ab   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">47</span> seconds ago   Up <span class="token number">26</span> seconds   <span class="token number">80</span>/tcp    fervent_yalow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="将端口暴露"><a href="#将端口暴露" class="headerlink" title="将端口暴露"></a>将端口暴露</h3><p>上面虽然将nginx运行起来了, 但是docker是隔离运行的, 端口没有暴露出来是不能够访问的, 所以需要将端口暴露出来.</p>
+<h3 id="将端口暴露"><a href="#将端口暴露" class="headerlink" title="将端口暴露"></a>将端口暴露</h3><p>上面虽然将nginx运行起来了, 但是docker是隔离运行的, 端口没有暴露出来是不能够访问的, 所以需要将端口暴露出来.</p>
 <ol>
 <li>先将原先运行的nginx停止</li>
 </ol>
@@ -615,7 +615,7 @@ bf05c0c930ab<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 87daf4cb13ff070921f63ce6400b4a5ca8c1fd9efa4f90fde82d5ce68bf50e70<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li>启动完后, 打开游览器访问<code>localhost:8080</code>将会看到nginx的页面.</li>
 </ol>
-<img src="https://c242p8.coding-pages.com/images/docker/pics/pic3.png" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic3.png" class="img-shadow img-margin">
+<img src="/loading.gif" data-original="/images/docker/pics/pic3.png" class="">
 
 <ol start="4">
 <li>映射多个端口号</li>
@@ -748,12 +748,12 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
                                 </a>
                             
-                                <a href="/tags/mac/">
-                                    <span class="chip bg-color">mac</span>
+                                <a href="/tags/Mac/">
+                                    <span class="chip bg-color">Mac</span>
                                 </a>
                             
                         </div>
@@ -1099,7 +1099,11 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%A1%86%E6%9E%B6/" class="post-category">
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
                                     框架
                                 </a>
                             
@@ -1110,12 +1114,12 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springCloud/">
-                        <span class="chip bg-color">springCloud</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/eureka/">
-                        <span class="chip bg-color">eureka</span>
+                    <a href="/tags/Eureka/">
+                        <span class="chip bg-color">Eureka</span>
                     </a>
                     
                 </div>
@@ -1132,9 +1136,9 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 <a href="/post/1380e7fc.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/jwt/thumbnail.png" class="responsive-img" alt="springBoot整合JWT+Security">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/jwt/thumbnail.png" class="responsive-img" alt="SpringBoot整合JWT+Security">
                         
-                        <span class="card-title">springBoot整合JWT+Security</span>
+                        <span class="card-title">SpringBoot整合JWT+Security</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1152,8 +1156,8 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category">
-                                    java
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
                                 </a>
                             
                             
@@ -1163,8 +1167,8 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/jpa/">
-                        <span class="chip bg-color">jpa</span>
+                    <a href="/tags/JWT/">
+                        <span class="chip bg-color">JWT</span>
                     </a>
                     
                     <a href="/tags/%E6%A1%86%E6%9E%B6/">
@@ -1353,7 +1357,7 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">40.9k</span>&nbsp;字
             
             
             

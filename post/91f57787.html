@@ -397,7 +397,11 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%A1%86%E6%9E%B6/" class="post-category">
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
                                 框架
                             </a>
                         
@@ -456,8 +460,7 @@
 <h5 id="进程内LB"><a href="#进程内LB" class="headerlink" title="进程内LB"></a>进程内LB</h5><p>将LB逻辑集成到消费方, 消费方从服务注册中心获知有哪些地址可用, 然后自己再从这些地址中选择出一个合适的服务器. </p>
 <p>Ribbon就属于进程内LB, 它只是一个类库, 集成于消费方进程, 消费方通过它来获取到服务提供方的地址. </p>
 <p><code>Ribbon架构图</code></p>
-<img src="https://c242p8.coding-pages.com/images/springcloud/loadBalancer/pic1.png" data-original="https://c242p8.coding-pages.com/images/springcloud/loadBalancer/pic1.png" class="img-shadow img-margin">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/loadBalancer/pic1.png"></p>
 <h3 id="整合LoadBalancer"><a href="#整合LoadBalancer" class="headerlink" title="整合LoadBalancer"></a>整合LoadBalancer</h3><h4 id="修改原有的轮询算法"><a href="#修改原有的轮询算法" class="headerlink" title="修改原有的轮询算法"></a>修改原有的轮询算法</h4><ol>
 <li>创建一个新的Module来整合LoadBalancer.</li>
 </ol>
@@ -487,8 +490,7 @@ eureka:
 <ol start="4">
 <li>创建RandomLoadBalancerConfig类, 替换掉原有的负债均衡策略</li>
 </ol>
-<img src="https://c242p8.coding-pages.com/images/springcloud/loadBalancer/pic2.png" data-original="https://c242p8.coding-pages.com/images/springcloud/loadBalancer/pic2.png" class="img-shadow img-margin">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/loadBalancer/pic2.png"></p>
 <p><code>LoadBalancer内置的两种负载均衡算法, 一个是轮询, 一个是随机.</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RandomLoadBalancerConfig</span> <span class="token punctuation">&#123;</span>
@@ -1030,17 +1032,16 @@ eureka:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/post/91f57787.html">
+                <a href="/post/71a31184.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="SpringCloud-LoadBalancer整合">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="SpringCloud-OpenFeign整合">
                         
-                        <span class="card-title">SpringCloud-LoadBalancer整合</span>
+                        <span class="card-title">SpringCloud-OpenFeign整合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1050,14 +1051,18 @@ eureka:
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%A1%86%E6%9E%B6/" class="post-category">
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
                                     框架
                                 </a>
                             
@@ -1065,7 +1070,6 @@ eureka:
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1073,8 +1077,8 @@ eureka:
                         <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/LoadBalancer/">
-                        <span class="chip bg-color">LoadBalancer</span>
+                    <a href="/tags/OpenFeign/">
+                        <span class="chip bg-color">OpenFeign</span>
                     </a>
                     
                 </div>
@@ -1110,7 +1114,11 @@ eureka:
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%A1%86%E6%9E%B6/" class="post-category">
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
                                     框架
                                 </a>
                             
@@ -1121,12 +1129,12 @@ eureka:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springCloud/">
-                        <span class="chip bg-color">springCloud</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/eureka/">
-                        <span class="chip bg-color">eureka</span>
+                    <a href="/tags/Eureka/">
+                        <span class="chip bg-color">Eureka</span>
                     </a>
                     
                 </div>
@@ -1311,7 +1319,7 @@ eureka:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">40.9k</span>&nbsp;字
             
             
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mysql事务相关知识点, Nathan&#39;s Blog">
+    <meta name="keywords" content="SpringCloud-CircuitBreaker-resilience4j整合, Nathan&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mysql事务相关知识点 | Nathan&#39;s Blog</title>
+    <title>SpringCloud-CircuitBreaker-resilience4j整合 | Nathan&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -261,12 +261,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/database/mysql/thumbnail.png');filter: brightness(0.8);">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/spring/thumbnail.png');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="color: rgb(245, 177, 94);">Mysql事务相关知识点</h1>
+                    <h1 class="description center-align post-title" style="color: rgb(245, 177, 94);">SpringCloud-CircuitBreaker-resilience4j整合</h1>
                 </div>
             </div>
         </div>
@@ -381,8 +381,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySql/">
-                                <span class="chip bg-color">MySql</span>
+                            <a href="/tags/SpringCloud/">
+                                <span class="chip bg-color">SpringCloud</span>
+                            </a>
+                        
+                            <a href="/tags/CircuitBreaker/">
+                                <span class="chip bg-color">CircuitBreaker</span>
+                            </a>
+                        
+                            <a href="/tags/Resilience4j/">
+                                <span class="chip bg-color">Resilience4j</span>
                             </a>
                         
                     </div>
@@ -393,8 +401,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                框架
                             </a>
                         
                     </div>
@@ -406,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-28
+                    2021-02-06
                 </div>
                 
 
@@ -415,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    8 分
                 </div>
                 
 
@@ -446,203 +458,314 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="小面试题"><a href="#小面试题" class="headerlink" title="小面试题"></a>小面试题</h4><p>所有的实体类都需要添加序列化接口吗？</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>上一篇文章是整合的Hystrix, 由于Hystrix已经停止更新不再增加新功能了, Spring官方更推荐的方案是使用Resilience4j作为这个Circuit Breaker, <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-circuitbreaker/docs/current/reference/html/">文档地址</a>.</p>
+<blockquote>
+<p>Resilience4J简介: </p>
+<p>Resilience4j 是一个轻量级的容错组件,其灵感来自于 Hystrix,但主要为 Java 8 和函数式编程所设计.轻量级体现在其只用 Vavr 库（前身是 Javaslang）,没有任何外部依赖.而 Hystrix 依赖了 Archaius ,Archaius 本身又依赖很多第三方包,例如 Guava, Apache Commons Configuration 等.</p>
+</blockquote>
+<blockquote>
+<p>Resilience4j 提供了如下几款核心组件</p>
+<ul>
+<li>resilience4j-circuitbreaker: Circuit breaking</li>
+<li>resilience4j-ratelimiter: Rate limiting</li>
+<li>resilience4j-bulkhead: Bulkheading</li>
+<li>resilience4j-retry: Automatic retrying (sync and async)</li>
+<li>resilience4j-cache: Response caching</li>
+</ul>
+<p>附件组件包括：</p>
+<ul>
+<li>resilience4j-reactor: Spring Reactor adapter</li>
+<li>resilience4j-rxjava2: RxJava2 adapter</li>
+<li>resilience4j-micrometer: Micrometer Metrics exporter</li>
+<li>resilience4j-metrics: Dropwizard Metrics exporter</li>
+<li>resilience4j-prometheus: Prometheus Metrics exporter</li>
+<li>resilience4j-spring-boot: Spring Boot Starter</li>
+<li>resilience4j-ratpack: Ratpack Starter</li>
+<li>resilience4j-retrofit: Retrofit Call Adapter Factories</li>
+<li>resilience4j-vertx: Vertx Future decorator</li>
+<li>resilience4j-consumer: Circular Buffer Event consumer</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>使用实例地址: </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/resilience4j/resilience4j#circuitbreaker">CircuitBreaker, Retry and Fallback</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/resilience4j/resilience4j#ratelimiter">RateLimiter</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/resilience4j/resilience4j#bulkhead">Bulkhead</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/resilience4j/resilience4j#cache">Cache</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/resilience4j/resilience4j#metrics">Metrics</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/resilience4j/resilience4j#events">Consume emitted events</a></li>
+</ul>
+</blockquote>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/resilience4j/pic1.png"></p>
+<p>可配置的参数, 资料来自于<a target="_blank" rel="noopener" href="https://resilience4j.readme.io/docs/circuitbreaker">resilience4j官方文档</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">Config property</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">failureRateThreshold</td>
+<td align="left">50</td>
+<td align="left">Configures the failure rate threshold in percentage.  When the failure rate is equal or greater than the threshold the CircuitBreaker transitions to open and starts short-circuiting calls.</td>
+</tr>
+<tr>
+<td align="left">slowCallRateThreshold</td>
+<td align="left">100</td>
+<td align="left">Configures a threshold in percentage. The CircuitBreaker considers a call as slow when the call duration is greater than <code>slowCallDurationThreshold</code>  When the percentage of slow calls is equal or greater the threshold, the CircuitBreaker transitions to open and starts short-circuiting calls.</td>
+</tr>
+<tr>
+<td align="left">slowCallDurationThreshold</td>
+<td align="left">60000 [ms]</td>
+<td align="left">Configures the duration threshold above which calls are considered as slow and increase the rate of slow calls.</td>
+</tr>
+<tr>
+<td align="left">permittedNumberOfCalls InHalfOpenState</td>
+<td align="left">10</td>
+<td align="left">Configures the number of permitted calls when the CircuitBreaker is half open.</td>
+</tr>
+<tr>
+<td align="left">maxWaitDurationInHalfOpenState</td>
+<td align="left">0</td>
+<td align="left">Configures a maximum wait duration which controls the longest amount of time a CircuitBreaker could stay in Half Open state, before it switches to open. Value 0 means Circuit Breaker would wait infinitely in HalfOpen State until all permitted calls have been completed.</td>
+</tr>
+<tr>
+<td align="left">slidingWindowType</td>
+<td align="left">COUNT_BASED</td>
+<td align="left">Configures the type of the sliding window which is used to record the outcome of calls when the CircuitBreaker is closed. Sliding window can either be count-based or time-based.  If the sliding window is COUNT_BASED, the last <code>slidingWindowSize</code> calls are recorded and aggregated. If the sliding window is TIME_BASED, the calls of the last <code>slidingWindowSize</code> seconds recorded and aggregated.</td>
+</tr>
+<tr>
+<td align="left">slidingWindowSize</td>
+<td align="left">100</td>
+<td align="left">Configures the size of the sliding window which is used to record the outcome of calls when the CircuitBreaker is closed.</td>
+</tr>
+<tr>
+<td align="left">minimumNumberOfCalls</td>
+<td align="left">100</td>
+<td align="left">Configures the minimum number of calls which are required (per sliding window period) before the CircuitBreaker can calculate the error rate or slow call rate. For example, if minimumNumberOfCalls is 10, then at least 10 calls must be recorded, before the failure rate can be calculated. If only 9 calls have been recorded the CircuitBreaker will not transition to open even if all 9 calls have failed.</td>
+</tr>
+<tr>
+<td align="left">waitDurationInOpenState</td>
+<td align="left">60000 [ms]</td>
+<td align="left">The time that the CircuitBreaker should wait before transitioning from open to half-open.</td>
+</tr>
+<tr>
+<td align="left">automaticTransition FromOpenToHalfOpenEnabled</td>
+<td align="left">false</td>
+<td align="left">If set to true it means that the CircuitBreaker will automatically transition from open to half-open state and no call is needed to trigger the transition. A thread is created to monitor all the instances of CircuitBreakers to transition them to HALF_OPEN once waitDurationInOpenState passes. Whereas, if set to false the transition to HALF_OPEN only happens if a call is made, even after waitDurationInOpenState is passed. The advantage here is no thread monitors the state of all CircuitBreakers.</td>
+</tr>
+<tr>
+<td align="left">recordExceptions</td>
+<td align="left">empty</td>
+<td align="left">A list of exceptions that are recorded as a failure and thus increase the failure rate. Any exception matching or inheriting from one of the list counts as a failure, unless explicitly ignored via <code>ignoreExceptions</code>. If you specify a list of exceptions, all other exceptions count as a success, unless they are explicitly ignored by <code>ignoreExceptions</code>.</td>
+</tr>
+<tr>
+<td align="left">ignoreExceptions</td>
+<td align="left">empty</td>
+<td align="left">A list of exceptions that are ignored and neither count as a failure nor success. Any exception matching or inheriting from one of the list will not count as a failure nor success, even if the exceptions is part of <code>recordExceptions</code>.</td>
+</tr>
+<tr>
+<td align="left">recordException</td>
+<td align="left">throwable -&gt; true  By default all exceptions are recored as failures.</td>
+<td align="left">A custom Predicate which evaluates if an exception should be recorded as a failure. The Predicate must return true if the exception should count as a failure. The Predicate must return false, if the exception should count as a success, unless the exception is explicitly ignored by <code>ignoreExceptions</code>.</td>
+</tr>
+<tr>
+<td align="left">ignoreException</td>
+<td align="left">throwable -&gt; false  By default no exception is ignored.</td>
+<td align="left">A custom Predicate which evaluates if an exception should be ignored and neither count as a failure nor success. The Predicate must return true if the exception should be ignored. The Predicate must return false, if the exception should count as a failure.</td>
+</tr>
+</tbody></table>
+<h2 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h2><h3 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h3><ol>
+<li><p>新建项目service-provider-resilience4j8082</p>
+</li>
+<li><p>pom.xml</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>springcloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.nathan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>service-provider-resilience4j8082<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.source</span><span class="token punctuation">></span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.source</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.target</span><span class="token punctuation">></span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.target</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+
+        <span class="token comment">&lt;!--circuitBreaker resilien4j依赖--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-circuitbreaker-resilience4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-netflix-eureka-client<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-actuator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-devtools<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optional</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optional</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.projectlombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>lombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optional</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optional</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-autoconfigure<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Application.yml</p>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">server:
+  port: 8082
+
+spring:
+  application:
+    name: service-provider
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http:&#x2F;&#x2F;eureka6001.com:6001&#x2F;eureka #单机版
+  #      defaultZone: http:&#x2F;&#x2F;eureka6001.com:6001&#x2F;eureka,http:&#x2F;&#x2F;eureka6002.com:6002&#x2F;eureka #集群版
+  instance:
+    instance-id: service-provider8082<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>SpringBoot启动类</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ServiceProviderResilience4j8082Application</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ServiceProviderResilience4j8082Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">//配置两个CircuitBreaker</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Customizer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Resilience4JCircuitBreakerFactory</span><span class="token punctuation">></span></span> <span class="token function">defaultCustomizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> factory <span class="token operator">-></span> factory<span class="token punctuation">.</span><span class="token function">configureDefault</span><span class="token punctuation">(</span>
+                id <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">Resilience4JConfigBuilder</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">timeLimiterConfig</span><span class="token punctuation">(</span><span class="token class-name">TimeLimiterConfig</span><span class="token punctuation">.</span><span class="token function">custom</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">timeoutDuration</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofSeconds</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">circuitBreakerConfig</span><span class="token punctuation">(</span><span class="token class-name">CircuitBreakerConfig</span><span class="token punctuation">.</span><span class="token function">custom</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">failureRateThreshold</span><span class="token punctuation">(</span><span class="token number">30f</span><span class="token punctuation">)</span> <span class="token comment">//失败率阈值设置</span>
+                                <span class="token punctuation">.</span><span class="token function">minimumNumberOfCalls</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Customizer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Resilience4JCircuitBreakerFactory</span><span class="token punctuation">></span></span> <span class="token function">slowCustomizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> factory <span class="token operator">-></span> factory<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span>builder <span class="token operator">-></span> builder
+                <span class="token punctuation">.</span><span class="token function">timeLimiterConfig</span><span class="token punctuation">(</span><span class="token class-name">TimeLimiterConfig</span><span class="token punctuation">.</span><span class="token function">custom</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">timeoutDuration</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofSeconds</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">circuitBreakerConfig</span><span class="token punctuation">(</span>
+                        <span class="token class-name">CircuitBreakerConfig</span><span class="token punctuation">.</span><span class="token function">ofDefaults</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"slow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+</li>
+</ol>
+<h3 id="CircuitBreaker"><a href="#CircuitBreaker" class="headerlink" title="CircuitBreaker"></a>CircuitBreaker</h3><ol>
+<li><p>Service</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@RequiredArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CircuitBreakerService</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">CircuitBreakerFactory</span> cbFactory<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">slow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> cbFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">"slow"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">::</span><span class="token function">getString</span><span class="token punctuation">,</span> throwable <span class="token operator">-></span> <span class="token string">"fallback"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">mayFail</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> cbFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">"default"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        <span class="token keyword">int</span> a <span class="token operator">=</span> number <span class="token operator">/</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">&#125;</span>
+                    <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> throwable <span class="token operator">-></span> <span class="token string">"fallback"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token string">"slow"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Controller</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequiredArgsConstructor</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/circuitBreaker"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CircuitBreakerController</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">CircuitBreakerService</span> service<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/slow"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> service<span class="token punctuation">.</span><span class="token function">slow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/mayFail"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">mayFail</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> service<span class="token punctuation">.</span><span class="token function">mayFail</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>进行接口测试</p>
 <ol>
-<li><p>为什么要实现序列化接口？标识该类可以被序列化，并为该类添加一个序列化ID</p>
+<li><p>请求slow将会超时, 返回结果fallback.</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/resilience4j/pic2.png"></p>
 </li>
-<li><p>序列化是用来做什么的？将Java对象中的数据以固定的格式写入到一个文件中，可以将该文件发送给需要使用对象数据的程序，再使用反序列化，根据该文件，在内存中创建对应的对象。</p>
+<li><p>多次发送负数请求至接口2, mayFail将触发断路器的开启.</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/resilience4j/pic3.png"></p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/resilience4j/pic4.png"></p>
+<p>60秒过后, 断路器恢复成半开状态</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/springcloud/resilience4j/pic5.png" alt="请求成功"></p>
 </li>
-<li><p>Web项目中什么时候需要序列化？</p>
-<pre><code> a: 业务层可能被做成第三方接口，供其他程序调用，包括微服务场景，这些场景下，彼此传递的实体类必须实现序列化接口
-
- b: HttpSession中保存的对象，需要实现序列化接口，因为Session执行机制中，包含自动将数据序列化到本地文件保存的机制。</code></pre>
+</ol>
 </li>
 </ol>
-<p>综上，很多企业要求所有的实体类都实现序列化接口，增加项目的可扩展性。</p>
-<a id="more"></a>
-
-<h3 id="补充知识点"><a href="#补充知识点" class="headerlink" title="补充知识点"></a>补充知识点</h3><h3 id="事务相关知识点"><a href="#事务相关知识点" class="headerlink" title="事务相关知识点"></a>事务相关知识点</h3><h4 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h4><p>事务指对数据库的一组操作，这组操作要么都实现，要么都不实现。</p>
-<p>常规的数据库均提供了对事务的支持，即数据库本身提供了保证一组操作要么都实现，要么都不实现的功能。使用者要掌握的是操作数据库提供的事务功能的方式，及事务的相关特性。</p>
-<p>####2 事务的实现方式？</p>
-<ul>
-<li>命令式事务</li>
-</ul>
-<p>在数据库客户端下，使用SQL语句来操作事务，SQL语句分别是：</p>
-<pre><code>start transaction; -- 开启事务
-commit; -- 提交事务
-rollback; -- 回滚事务</code></pre>
-<p>需要特别注意的是，默认情况下，每条SQL语句独占一个事务。</p>
-<ul>
-<li>编程式事务</li>
-</ul>
-<p>通过JDBC API实现数据库事务操作，API分别是:</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">conn<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 开启事务</span>
-conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 提交事务</span>
-conn<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 回滚事务 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>声明式事务</li>
-</ul>
-<p>利用Spring框架提供的<code>@Transactional</code>注解来实现。</p>
-<p>@Transactional默认仅对RuntimeException及其子类异常回滚，因此我们在设计异常时，要求ServiceException继承RuntimeException，以保证事务正常回滚。</p>
-<p>可以通过显式声明rollbackfor属性，来配置该注解对Exception回滚：@Transactional(rollbackFor=Exception.class)</p>
-<p>@Transactional也可以添加到类上，代表该类中所有的方法都是在事务下运行的，但是不推荐这么做</p>
-<p>####3 事务的4大特性<br>事务具备ACID四种特性，ACID是Atomic（原子性）、Consistency（一致性）、Isolation（隔离性）和Durability（持久性）的英文缩写。　</p>
-<ul>
-<li>原子性（Atomicity）</li>
-</ul>
-<p>事务最基本的操作单元，要么全部成功，要么全部失败，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚到事务开始前的状态，就像这个事务从来没有执行过一样。</p>
-<ul>
-<li>一致性（Consistency）<br>事务执行前后，数据库的完整性是一致的。</li>
-</ul>
-<p>数据库的完整性：数据的完整性、业务的完整性。</p>
-<p>业务的完整性例子：转账操作，事务前后，原账户和目标账户的金额总和是一致的。</p>
-<pre><code>a 转 1000元 给b
-转账前：  a余额5000，b余额 6000   a+b=11000
-转账后：  a余额4000，b余额 7000   a+b=11000</code></pre>
-<ul>
-<li>隔离性（Isolation）<br>并发的事务之间，应该保证彼此隔离，互不干扰。</li>
-</ul>
-<p>指的是在并发环境中，当不同的事务同时操纵相同的数据时，每个事务都有各自的完整数据空间。由并发事务所做的修改必须与任何其他并发事务所做的修改隔离。事务查看数据更新时，数据所处的状态要么是另一事务修改它之前的状态，要么是另一事务修改它之后的状态，事务不会查看到中间状态的数据。</p>
-<ul>
-<li>持久性（Durability）<br>指的是只要事务成功结束，它对数据库所做的更新就必须永久保存下来。事务一旦commit，其操作结果就是持久的，后续再进行多次的rollback，也不会改变之前的结果。</li>
-</ul>
-<p>####4 事务的隔离级别<br>数据库事务的隔离级别是保证事务隔离性的解决方案。</p>
-<p>加锁可以保证完美的隔离，同一时间内只能有一个人操作数据，但是这样一来数据库就相当于工作在单线程的状态下，同一时间只能有一个事务操作，并发的效率非常低下</p>
-<p>而现实生活中，并不是所有的场景下都需要那么严格的事务隔离，在不同的业务场景下对隔离性的要求是不同。</p>
-<p>所以数据库的设计者设计了不同的隔离级别，让使用者可以在隔离能力和性能间做一个权衡。</p>
-<p>事务的隔离级别有4种，由低到高分别为Read uncommitted、Read committed、Repeatable read、Serializable。</p>
-<p>事务的隔离级别越高，事务与事务之间彼此的干扰越少，安全性越高，但是消耗的资源也越多。反之，隔离性越低，消耗资源越少，效率越高，但是安全性也越差。</p>
-<p>因此，事务的隔离级别不是越高越好，是在当前业务安全性允许的条件下，选择最低的隔离级别。</p>
-<p>Mysql数据库的默认隔离级别是：Repeatable read<br>Oracle数据库的默认隔离级别时：Read committed</p>
-<h4 id="脏读、不可重复读、幻象读概念说明："><a href="#脏读、不可重复读、幻象读概念说明：" class="headerlink" title="脏读、不可重复读、幻象读概念说明："></a>脏读、不可重复读、幻象读概念说明：</h4><p>脏读：一个事务使用了另一个事务未提交的数据。</p>
-<p>不可重复读：指在一个事务内，多次读同一数据，得到的结果不同。</p>
-<p>幻读：一个事务读取全表数据时，读取到另一个事务向表中新增、删除操作提交的结果</p>
-<h4 id="4种隔离级别具体说明："><a href="#4种隔离级别具体说明：" class="headerlink" title="4种隔离级别具体说明："></a>4种隔离级别具体说明：</h4><ol>
-<li>Read uncoommitted<br>读未提交，一个事务可以读取到另一个事务未提交的操作的结果。该级别不保证任何的隔离性。</li>
-</ol>
-<p>该隔离级别可能出现脏读、不可重复读、幻读问题。</p>
-<p>举例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">例子前的建表语句：
-
-create table account(
-	id int primary key auto_increment,
-	name varchar(10),
-	money int
-);
-
-insert into account values(1,&#39;a&#39;,1000),(2,&#39;b&#39;,1000);
-
-查询数据库隔离级别的SQL语句：
-select @@tx_isolation;
-
-设置数据库的隔离级别的SQL语句:
-set [session&#x2F;global] transaction isolation level xxxxxx;
-session：修改当前会话的隔离级别，不影响其他会话。当前客户端关闭，则修改失效。
-global：修改数据库的默认隔离级别，对所有后续新建的会话生效，对之前已经存在的会话无效。
-
-案例演示：
-a:
-	set session transaction isolation level read uncommitted;
-	---------------
-	a: 1000
-	b: 1000
-	---------------
-
-b:
-	start transaction;
-	update account set money &#x3D; money - 100 where name &#x3D; &#39;b&#39;;
-	update account set money &#x3D; money + 100 where name &#x3D; &#39;a&#39;;
-
-a:
-	start transaction;
-	select * from account;
-	---------------
-	a: 1100
-	b: 900
-	---------------
-	commit;
-
-b:
-	rollback;
-
-a:
-	start transaction;
-	select * from account;
-	---------------
-	a: 1000
-	b: 1000
-	---------------
-	commit;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
-<li>Read committed<br>读已提交，一个事务仅能读取到另一个事务已提交的数据。</li>
-</ol>
-<p>可以保证部分隔离性，可以防止脏读问题，但是具有不可重复读和幻读问题。</p>
-<p>不可重复读不一定是问题，仅在一些特殊的场景下，会成为问题。</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">例子前的建表语句：
-
-create table account2(
-	name varchar(10),
-	money1 int, -- 现金
-	money2 int, -- 活期存款
-	money3 int -- 定期存款
-);
-
-insert into account2 values(&#39;a&#39;,1000,1000,1000);
-
-a:
-	set session transaction isolation level read committed;
-	
-	-------------------------
-		a 1000 1000 1000
-	-------------------------
-
-b:
-	start transaction;
-	select money1 from account where name &#x3D; &#39;a&#39;; -- 活期存款1000
-	select money2 from account where name &#x3D; &#39;a&#39;; -- 定期存款1000
-	select money3 from account where name &#x3D; &#39;a&#39;; -- 固定存款1000
-	-------------
-a:
-	start transaction;
-	update account2 set money1 &#x3D; money1 - 1000 where name &#x3D; &#39;a&#39;;
-	commit;
-	-------------
-b:	
-	select money1 + money2 + money3 from account where name &#x3D; &#39;a&#39;; -- 总资产2000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="3">
-<li>Repeatable read<br>可重复读，该级别下，一个事务无法读取另一个后开启的事务已提交的操作结果。</li>
-</ol>
-<p>可以防止脏读和不可重复读问题，但是会出现幻读问题。</p>
-<p>举例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set session transaction isolation level Repeatable read;
-
-	-------------------------
-		a 1000 
-		b 1000
-	-------------------------
-a：
-	start transaction;
-	select count(*) from account; -- 2人
-	select sum(money) from account; -- 2000元
-	--------
-	d：
-		start transaction;
-		insert into account values(d 4000);
-		commit;
-		-------------------------
-			a 1000 
-			b 1000
-			d 4000
-		-------------------------
-	--------
-	select avg(money) from account; -- 2000元
-	commit;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="4">
-<li>Serializable<br>保证完全隔离,可以防止脏读,不可重复读,幻读问题,本质上是靠锁来实现的</li>
-</ol>
-<p>####5 事务的传播机制<br>在使用Spring的声明式事务，即<code>@Transactional</code>注解时，可以使用<code>@Transactional(propagation = Propagation.REQUIRED)</code>来配置事务的传播行为。</p>
-<p>spring在<code>TransactionDefinition</code>接口中定义了七个事务传播行为，也可以通过<code>Propagation</code>枚举类来调用：</p>
-<p>REQUIRED（默认）：支持使用当前事务，如果当前事务不存在，创建一个新事务。<br>SUPPORTS：支持使用当前事务，如果当前事务不存在，则不使用事务。<br>MANDATORY：中文翻译为强制，支持使用当前事务，如果当前事务不存在，则抛出Exception。<br>REQUIRES_NEW：创建一个新事务，如果当前事务存在，把当前事务挂起。<br>NOT_SUPPORTED：无事务执行，如果当前事务存在，把当前事务挂起。<br>NEVER：无事务执行，如果当前有事务则抛出Exception。<br>NESTED：嵌套事务，如果当前事务存在，那么在嵌套的事务中执行。如果当前事务不存在，则表现跟REQUIRED一样。</p>
 
                 
             </div>
@@ -669,7 +792,7 @@ a：
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://nathan98.gitee.io/post/80e80240.html">https://nathan98.gitee.io/post/80e80240.html</a>
+                    <a href="https://nathan98.gitee.io/post/d0cc1785.html">https://nathan98.gitee.io/post/d0cc1785.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -707,8 +830,16 @@ a：
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySql/">
-                                    <span class="chip bg-color">MySql</span>
+                                <a href="/tags/SpringCloud/">
+                                    <span class="chip bg-color">SpringCloud</span>
+                                </a>
+                            
+                                <a href="/tags/CircuitBreaker/">
+                                    <span class="chip bg-color">CircuitBreaker</span>
+                                </a>
+                            
+                                <a href="/tags/Resilience4j/">
+                                    <span class="chip bg-color">Resilience4j</span>
                                 </a>
                             
                         </div>
@@ -1028,53 +1159,59 @@ a：
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/post/ea590675.html">
+                <a href="/post/d0cc1785.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/golang/thumbnail.jpg" class="responsive-img" alt="Golang之循环">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="SpringCloud-CircuitBreaker-resilience4j整合">
                         
-                        <span class="card-title">Golang之循环</span>
+                        <span class="card-title">SpringCloud-CircuitBreaker-resilience4j整合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            学习golang循环在golang中只有一种循环结构那就是for循环
-for循环基本格式声明for i := 0; i &lt; 10; i++ &#123;
-	fmt.Println(i)
- &#125;
-变种1. 初始化循环条件可以提出
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Golang/" class="post-category">
-                                    Golang
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    框架
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Golang/">
-                        <span class="chip bg-color">Golang</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%A5%E9%97%A8/">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/CircuitBreaker/">
+                        <span class="chip bg-color">CircuitBreaker</span>
+                    </a>
+                    
+                    <a href="/tags/Resilience4j/">
+                        <span class="chip bg-color">Resilience4j</span>
                     </a>
                     
                 </div>
@@ -1088,34 +1225,34 @@ for循环基本格式声明for i := 0; i &lt; 10; i++ &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/post/9844c119.html">
+                <a href="/post/28df3b26.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/golang/thumbnail.jpg" class="responsive-img" alt="Golang之变量声明">
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="SpringCloud-Hystrix整合">
                         
-                        <span class="card-title">Golang之变量声明</span>
+                        <span class="card-title">SpringCloud-Hystrix整合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            学习golang变量声明的几种方式声明单个变量var name string //没有赋值默认情况为空字符串 ""
-var age int     // 0
-var isOk        // false
-批量声明变量var (
-    
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Golang/" class="post-category">
-                                    Golang
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    框架
                                 </a>
                             
                             
@@ -1125,12 +1262,12 @@ var isOk        // false
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Golang/">
-                        <span class="chip bg-color">Golang</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%A5%E9%97%A8/">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/Hystrix/">
+                        <span class="chip bg-color">Hystrix</span>
                     </a>
                     
                 </div>

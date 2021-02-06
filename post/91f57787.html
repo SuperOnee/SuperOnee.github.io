@@ -454,7 +454,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>LoadBalancer是什么? 由于SpringCloud Netflix的Ribbon目前进入了维护模式, LoadBalancer是SpringCloud开发的Ribbon替换方案. </p>
+                <h3 id="LoadBalancer简介"><a href="#LoadBalancer简介" class="headerlink" title="LoadBalancer简介"></a>LoadBalancer简介</h3><p>LoadBalancer是什么? 由于SpringCloud Netflix的Ribbon目前进入了维护模式, LoadBalancer是SpringCloud开发的Ribbon替换方案. </p>
 <p>Ribbon是用来实现一套客户端的负债均衡工具, 其主要的功能就是提供客户端的软件负债均衡算法和服务的调用. Ribbon客户端组件提供一系列完善的配置项如连接超时, 重试等. 简单的说, 就是在配置文件中列出LoadBalancer (简称LB) 后面所有的机器, Ribbon会自动的帮助你基于某种规则 (如简单轮询, 随机连接等) 去连接这些机器. 我们可以通过Ribbon轻易地实现自定义的负债均衡算法. </p>
 <h4 id="LB-负载均衡"><a href="#LB-负载均衡" class="headerlink" title="LB (负载均衡)"></a>LB (负载均衡)</h4><h5 id="集中式LB"><a href="#集中式LB" class="headerlink" title="集中式LB"></a>集中式LB</h5><p>即在服务的消费方和提供方之间使用独立的LB设施(可以是硬件, 如F5, 也可以是软件, 如nginx), 由该设施负责把访问请求通过某种策略转发至服务的提供方. </p>
 <h5 id="进程内LB"><a href="#进程内LB" class="headerlink" title="进程内LB"></a>进程内LB</h5><p>将LB逻辑集成到消费方, 消费方从服务注册中心获知有哪些地址可用, 然后自己再从这些地址中选择出一个合适的服务器. </p>
@@ -1319,7 +1319,7 @@ eureka:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.9k</span>&nbsp;字
+                class="white-color">47.3k</span>&nbsp;字
             
             
             
@@ -2007,6 +2007,14 @@ $(function () {
             
     
 
+    
+        <script>
+            $('.bg-cover').fireworks({ 
+                opacity: 0.5, 
+                width: '100%', 
+                height: '100%'
+            });
+        </script>
     
 
     

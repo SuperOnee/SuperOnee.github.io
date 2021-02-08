@@ -419,14 +419,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    14 分
                 </div>
                 
 
@@ -682,6 +682,138 @@ docker <span class="token function">rm</span> -f <span class="token variable"><s
 <span class="token comment"># 使用名字将container停止.</span>
 docker stop website
 website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Docker-Volumes"><a href="#Docker-Volumes" class="headerlink" title="Docker Volumes"></a>Docker Volumes</h3><p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic4.png"></p>
+<p>Docker Volumes可以让我们将Host主机的数据和Docker容器进行共享同时呢也可以是容器和容器之间的数据共享.</p>
+<p>打开dockerHub搜索nginx查看<a target="_blank" rel="noopener" href="https://hub.docker.com/_/nginx">文档</a>, 可以看到volumes对应的命令如下: </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这里的-v就是开启volume, /some/content表示source就是源, /usr/share/nginx/html就是目标位置, :ro表示是readOnly, 意思就是只读.</span>
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li><p>在桌面创建文件夹, website</p>
+</li>
+<li><p>文件夹内创建index.html</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Hello Docker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hello Docker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>运行命令</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic5.png"></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这里的pwd就是当前目录.</span>
+docker run --name website -v <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>:/usr/share/nginx/html:ro -d -p <span class="token number">8080</span>:80 nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>访问地址: <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a>, 可以看到已经不是Nginx原来的welcome页面了,现在变成了Hello Docker.</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic6.png"></p>
+</li>
+</ul>
+<h4 id="查看容器中的index-html"><a href="#查看容器中的index-html" class="headerlink" title="查看容器中的index.html"></a>查看容器中的index.html</h4><ol>
+<li><p>使用bash command进入容器, 容器的结构是像Linux一样的.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token builtin class-name">exec</span> -it website <span class="token function">bash</span> <span class="token comment">#执行这一条命令, 进入容器</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic7.png" alt="容器结构"></p>
+</li>
+<li><p>接下来我们进入usr/share/nginx/html就可以看到之前创建的index.html页面了.</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic8.png" alt="容器结构"></p>
+</li>
+</ol>
+<h4 id="创建一个新的页面about-html"><a href="#创建一个新的页面about-html" class="headerlink" title="创建一个新的页面about.html"></a>创建一个新的页面about.html</h4><p>  在容器中新建一个页面, about.html</p>
+<ol>
+<li><p>定位到usr/share/html路径</p>
+</li>
+<li><p>执行命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> about.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>因为创建的是只读volume, 所以说不能创建新的文件.</p>
+</li>
+<li><p><font size=5>解决方式</font></p>
+<ol>
+<li><p>先将原先的docker container移出.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">rm</span> -f website <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>创建新的容器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#原先执行的指令</span>
+docker run --name website -v <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>:/usr/share/nginx/html:ro -d -p <span class="token number">8080</span>:80 nginx 
+<span class="token comment">#现在执行的指令, 讲html后面的:ro移出, 不指定当前volume为只读volume</span>
+docker run --name website -v <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>:/usr/share/nginx/html -d -p <span class="token number">8080</span>:80 nginx <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>启动完成之后继续bash进container, 然后在原来的目录继续创建about.html</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token builtin class-name">exec</span> -it website <span class="token function">bash</span>
+
+<span class="token builtin class-name">cd</span> usr/share/nginx/html
+
+<span class="token function">touch</span> about.html <span class="token comment">#创建about.html页面</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>创建完成之后, 我们查看桌面上的website文件夹.</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic10.png" alt="桌面下的文件夹"></p>
+<p>可以看到成功地创建了about.html页面</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Container之间的Volumes"><a href="#Container之间的Volumes" class="headerlink" title="Container之间的Volumes"></a>Container之间的Volumes</h3><p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic11.png" alt="VolumesBetweenContainers"></p>
+<p>容器和容器之间共享数据其实非常简单, 一行命令即可解决</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 使用--volumes-from + 容器名称命令即可, 这样的话website2和website的数据就相同了</span>
+docker run --name website2 --volumes-from website -d -p <span class="token number">8081</span>:80 nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic12.png" alt="页面"></p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><ol>
+<li><p><font size=5>什么是Dockerfile</font></p>
+<blockquote>
+<p>Dockerfile是给我们用来构建镜像的文本文件, 文本内容包含了一条条构建镜像所需的指令和说明</p>
+</blockquote>
+</li>
+<li><p><font size=5>Dockerfile的作用</font></p>
+<ul>
+<li>安装dockerfile中的指令定义docker容器或者容器中的应用程序以及服务</li>
+<li>Dockerfile制作一个镜像模板安装模板统一生成容器</li>
+</ul>
+</li>
+<li><p><font size=5>Dockerfile中常见的指令和作用</font></p>
+<blockquote>
+<p>FROM：指定创建镜像的基础镜像</p>
+<p>MAINTAINER：Dockerfile作者信息, 一般写的是联系方式</p>
+<p>RUN：运行Linux系统的命令使用</p>
+<p>CMD：指定容器启动执行的命令; 启动容器中的服务</p>
+<p>LABEL：指定生成镜像的源数据标签</p>
+<p>EXPOSE：指定镜像容器监听端口号; 发布服务使用</p>
+<p>ENV：使用环境变量</p>
+<p>ADD：对压缩文件进行解压缩; 将数据移动到指定的目录</p>
+<p>COPY：复制宿主机数据到镜像内部使用</p>
+<p>WORKDIR：切换到镜像容器中的指定目录中</p>
+<p>VOLUME：挂载数据卷到镜像容器中</p>
+<p>USER：指定运行容器的用户</p>
+<p>ARG：指定镜像的版本号信息</p>
+<p>ONBUILD：创建镜像, 作为其他镜像的基础镜像运行操作指令</p>
+<p>ENTRYPOINT：指定运行容器启动过程执行命令, 覆盖CMD参数</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="构建一个Image"><a href="#构建一个Image" class="headerlink" title="构建一个Image"></a>构建一个Image</h4><p>将原先的website文件夹, 构建成一个image, 这样我们可以直接将image跑起来就能访问到里面的内容, 并且不需要像之前一样, 挂载一个volume.</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic13.png" alt="DockerImage"></p>
+<p><font size=5>构建步骤</font></p>
+<ol>
+<li><p>在website目录下创建一个Dockerfile</p>
+<pre class="line-numbers language-dockerfile" data-language="dockerfile"><code class="language-dockerfile">FROM nginx:latest #基于nginx构建image
+ADD . &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html #.为当前目录(也就是source), &#x2F;usr&#x2F;share**依然为目标目录.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>使用docker build命令构建image</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># -t指定tag, 格式为name:tag(名称:版本), 最后的.为指定Dockerfile的路径, 要确保当前在website目录下.</span>
+docker build -t website:latest <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>命令执行完后执行<code>docker image ls</code>就能够看到有一个新的image叫website了</p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic14.png" alt="页面"></p>
+</li>
+<li><p>将website这个镜像运行起来</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run --name website -d -p <span class="token number">8080</span>:80 website:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>进行测试, 访问地址: <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a>, 可以看到: Hello Docker and volumes.</p>
+</li>
+</ol>
+<blockquote>
+<p>.dockerignore文件</p>
+<p>类似于.gitignore, 在gitignore文件中的数据都不提交到git, 在dockerignore文件中的数据在docker build的时候会被忽略.</p>
+</blockquote>
+<h3 id="DockerRepository-Docker仓库"><a href="#DockerRepository-Docker仓库" class="headerlink" title="DockerRepository(Docker仓库)"></a>DockerRepository(Docker仓库)</h3><blockquote>
+<p>Docker仓库就像git仓库一样, 对文件进行版本管理控制. </p>
+<p>地址: <a target="_blank" rel="noopener" href="https://hub.docker.com/repository/create">https://hub.docker.com/repository/create</a></p>
+</blockquote>
+
                 
             </div>
             <hr/>
@@ -1354,7 +1486,7 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">49.8k</span>&nbsp;字
+                class="white-color">51k</span>&nbsp;字
             
             
             

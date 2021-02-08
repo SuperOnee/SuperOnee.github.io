@@ -455,10 +455,9 @@
 <ol>
 <li>首先进入<a target="_blank" rel="noopener" href="https://www.docker.com/">docker官网</a>找到适合自己的版本后点击下载. </li>
 </ol>
-<img src="/loading.gif" data-original="/images/docker/pics/pic1.png" class="">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic1.png"></p>
 <ol start="2">
-<li><p>下载完后进行docker的安装, 安装完后就可以启动docker了. </p>
+<li><p>下载完后进行docker的安装, 安装完后就可以启动docker了. </p>
 </li>
 <li><p>安装完Docker后打开终端输入docker. 看到终端返回内容如下表示安装成功.</p>
 </li>
@@ -548,7 +547,7 @@ Commands:
 Run '</span>docker COMMAND --help' <span class="token keyword">for</span> <span class="token function">more</span> information on a command.
 
 To get <span class="token function">more</span> <span class="token builtin class-name">help</span> with docker, check out our guides at https://docs.docker.com/go/guides/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Docker-Image和-Docker-Container"><a href="#Docker-Image和-Docker-Container" class="headerlink" title="Docker Image和 Docker Container"></a>Docker Image和 Docker Container</h3><p>Docker Image就是Docker镜像, 镜像可以是是数据库, web容器, web应用等等. Docker Container就是Docker容器, Docker容器是什么呢? 实际上就是正在运行Docker镜像实例.<br><br>接下来就看看如何下载一个 Docker 镜像. 并将其运行起来.</p>
+<h3 id="Docker-Image和-Docker-Container"><a href="#Docker-Image和-Docker-Container" class="headerlink" title="Docker Image和 Docker Container"></a>Docker Image和 Docker Container</h3><p>Docker Image就是Docker镜像, 镜像可以是是数据库, web容器, web应用等等. Docker Container就是Docker容器, Docker容器是什么呢? 实际上就是正在运行Docker镜像实例.<br>接下来就看看如何下载一个 Docker 镜像. 并将其运行起来.</p>
 <ol>
 <li><p>打开<a target="_blank" rel="noopener" href="https://hub.docker.com/_/nginx">Docker hub</a>往下滑动找到对应的Docker Nginx镜像</p>
 </li>
@@ -583,8 +582,7 @@ nginx        latest    9b016c5aa4e8   <span class="token number">2</span> weeks 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># :冒号后面的latest为Tag也就是版本.</span>
 docker run nginx:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>输入完命令后, 可以发现终端被阻塞住了, 不能敲命令了, 并且打开docker dashboard后可以看到nginx的状态是running的也就是处于运行状态.</code></p>
-<img src="/loading.gif" data-original="/images/docker/pics/pic2.png" class="">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic2.png"></p>
 <p>原因是: <code>因为没有指定nginx在后台运行.</code></p>
 <ol start="5">
 <li>使用命令查看正在运行的镜像实例.</li>
@@ -615,8 +613,7 @@ bf05c0c930ab<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 87daf4cb13ff070921f63ce6400b4a5ca8c1fd9efa4f90fde82d5ce68bf50e70<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li>启动完后, 打开游览器访问<code>localhost:8080</code>将会看到nginx的页面.</li>
 </ol>
-<img src="/loading.gif" data-original="/images/docker/pics/pic3.png" class="">
-
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/docker/pics/pic3.png"></p>
 <ol start="4">
 <li>映射多个端口号</li>
 </ol>
@@ -649,7 +646,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 87daf4cb13ff   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">20</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">16</span> minutes ago                                                naughty_sutherland
 bf05c0c930ab   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">29</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">22</span> minutes ago                                                fervent_yalow
 3a19643c7f12   nginx:latest   <span class="token string">"/docker-entrypoint.…"</span>   <span class="token number">40</span> minutes ago   Exited <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">32</span> minutes ago                                                nice_vaughan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>对创建出来的容器进行管理, 将指定容器删除.</p>
+<p>对创建出来的容器进行管理, 将指定容器删除.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#删除容器可以使用id或者是name</span>
 docker <span class="token function">rm</span> nice_vaughan                          
 nice_vaughan
@@ -1167,12 +1164,12 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A1%86%E6%9E%B6/">
-                        <span class="chip bg-color">框架</span>
-                    </a>
-                    
                     <a href="/tags/JWT/">
                         <span class="chip bg-color">JWT</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A1%86%E6%9E%B6/">
+                        <span class="chip bg-color">框架</span>
                     </a>
                     
                 </div>
@@ -1357,7 +1354,7 @@ website<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.3k</span>&nbsp;字
+                class="white-color">49.8k</span>&nbsp;字
             
             
             
@@ -2045,14 +2042,6 @@ $(function () {
             
     
 
-    
-        <script>
-            $('.bg-cover').fireworks({ 
-                opacity: 0.5, 
-                width: '100%', 
-                height: '100%'
-            });
-        </script>
     
 
     

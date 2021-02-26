@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Golang之匿名函数和闭包, Nathan&#39;s Blog">
+    <meta name="keywords" content="vue+element ui动态表单校验, Nathan&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Golang之匿名函数和闭包 | Nathan&#39;s Blog</title>
+    <title>vue+element ui动态表单校验 | Nathan&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -261,12 +261,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://c242p8.coding-pages.com/images/golang/thumbnail.jpg');filter: brightness(0.8);">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg');filter: brightness(0.8);">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title" style="color: rgb(245, 177, 94);">Golang之匿名函数和闭包</h1>
+                    <h1 class="description center-align post-title" style="color: rgb(245, 177, 94);">vue+element ui动态表单校验</h1>
                 </div>
             </div>
         </div>
@@ -379,29 +379,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Golang/">
-                                <span class="chip bg-color">Golang</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%85%A5%E9%97%A8/">
-                                <span class="chip bg-color">入门</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Golang/" class="post-category">
-                                Golang
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -410,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-09
+                    2021-02-26
                 </div>
                 
 
@@ -419,14 +402,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    321
+                    555
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -450,57 +433,142 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="学习golang匿名函数和闭包"><a href="#学习golang匿名函数和闭包" class="headerlink" title="学习golang匿名函数和闭包"></a>学习golang匿名函数和闭包</h3><h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>函数内部没有办法声明有名字的函数就是匿名函数</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 匿名函数</span>
-
-<span class="token keyword">var</span> f1 <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
+                <h2 id="Vue-Element-ui实现动态表单校验"><a href="#Vue-Element-ui实现动态表单校验" class="headerlink" title="Vue+Element ui实现动态表单校验"></a>Vue+Element ui实现动态表单校验</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>在工作中遇到一个棘手的页面需求, 页面的表单需要动态添加, 而且每个新增的表单项都要绑定上相应的校验规则. </p>
+<p><img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/vueFormValidation/pic1.png" alt="图片"></p>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
+<li><p>准备表单代码, 重点是在表单的双向绑定和prop属性绑定</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-form</span>
+       <span class="token attr-name">:model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ruleForm<span class="token punctuation">"</span></span>
+       <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ruleForm<span class="token punctuation">"</span></span>
+       <span class="token attr-name">label-width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>120px<span class="token punctuation">"</span></span>
+       <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo-ruleForm<span class="token punctuation">"</span></span>
+       <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span>
+     <span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>(item, index) in ruleForm.contactList<span class="token punctuation">"</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>index<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-form-item</span>
+           <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>真实姓名<span class="token punctuation">"</span></span>
+           <span class="token attr-name">:prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>contactList.<span class="token punctuation">'</span> + index + <span class="token punctuation">'</span>.realName<span class="token punctuation">'</span><span class="token punctuation">"</span></span>
+           <span class="token attr-name">:rules</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.rules[0]<span class="token punctuation">"</span></span> 
+         <span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-input</span>
+             <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span> 300px</span><span class="token punctuation">"</span></span></span>
+             <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.realName<span class="token punctuation">"</span></span>
+             <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>请输入真实姓名<span class="token punctuation">"</span></span>
+           <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-input</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-form-item</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-form-item</span>
+           <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>手机号码<span class="token punctuation">"</span></span>
+           <span class="token attr-name">:prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>contactList.<span class="token punctuation">'</span> + index + <span class="token punctuation">'</span>.phoneNumber<span class="token punctuation">'</span><span class="token punctuation">"</span></span>
+           <span class="token attr-name">:rules</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.rules[1]<span class="token punctuation">"</span></span>
+         <span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-input</span>
+             <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span> 300px</span><span class="token punctuation">"</span></span></span>
+             <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.phoneNumber<span class="token punctuation">"</span></span>
+             <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>请输入手机号码<span class="token punctuation">"</span></span>
+           <span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-input</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-form-item</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-form-item</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">float</span><span class="token punctuation">:</span> right</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>addContact<span class="token punctuation">"</span></span>
+           <span class="token punctuation">></span></span>添加联系人<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span>
+         <span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span>
+           <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">margin-bottom</span><span class="token punctuation">:</span> 50px</span><span class="token punctuation">"</span></span></span>
+           <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span>
+           <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span>
+           <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>deleteContact<span class="token punctuation">"</span></span>
+           <span class="token punctuation">></span></span>删除联系人<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span>
+         <span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submitForm(<span class="token punctuation">'</span>ruleForm<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span>
+           <span class="token punctuation">></span></span>提交表单<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span>
+         <span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>resetForm(<span class="token punctuation">'</span>ruleForm<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>重置<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-form-item</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-form</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>初始化表单数据</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">ruleForm<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    contactList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>准备校验规则</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//base 校验, 不可为空, 传入字段名称即可</span>
+<span class="token keyword">function</span> <span class="token function">baseValidation</span><span class="token punctuation">(</span><span class="token parameter">col</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> message<span class="token operator">:</span> col <span class="token operator">+</span> <span class="token string">'不可为空'</span><span class="token punctuation">,</span> trigger<span class="token operator">:</span> <span class="token string">'blur'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	<span class="token function">f1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-	<span class="token comment">//函数内部没有办法声明有名字的函数</span>
-	f1 <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token function">f1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token comment">//是否为手机号校验</span>
+<span class="token keyword">function</span> <span class="token function">validatePhone</span><span class="token punctuation">(</span><span class="token parameter">rule<span class="token punctuation">,</span> value<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[1][3,4,5,7,8][0-9]&#123;9&#125;$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">===</span> <span class="token string">''</span> <span class="token operator">||</span> value <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> value <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> value <span class="token operator">!==</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'请输入正确的电话号码'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>准备函数</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addContact</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+          <span class="token function">submitForm</span><span class="token punctuation">(</span><span class="token parameter">formName</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span>formName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">valid</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+              <span class="token keyword">if</span> <span class="token punctuation">(</span>valid<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>ruleForm<span class="token punctuation">.</span>contactList <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ruleForm<span class="token punctuation">.</span>contactList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>
+                  <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">delete</span> item<span class="token punctuation">.</span>rules<span class="token punctuation">;</span> <span class="token comment">//提交之前将里面绑定的rules移出</span>
+                    <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+                  <span class="token punctuation">&#125;</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'提交成功'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">resetForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'提交失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+              <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token function">resetForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ruleForm<span class="token punctuation">.</span>contactList <span class="token operator">=</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">&#123;</span>
+                realName<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+                phoneNumber<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+                rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+                  <span class="token function">baseValidation</span><span class="token punctuation">(</span><span class="token string">'真实姓名'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                  <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> validator<span class="token operator">:</span> validatePhone <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>
+                    <span class="token function">baseValidation</span><span class="token punctuation">(</span><span class="token string">'手机号'</span><span class="token punctuation">)</span>
+                  <span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token comment">//添加联系人</span>
+          <span class="token function">addContact</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ruleForm<span class="token punctuation">.</span>contactList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+              realName<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+              phoneNumber<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+              rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token function">baseValidation</span><span class="token punctuation">(</span><span class="token string">'真实姓名'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> validator<span class="token operator">:</span> validatePhone <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token function">baseValidation</span><span class="token punctuation">(</span><span class="token string">'手机号'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+              <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token comment">//删除联系人</span>
+          <span class="token function">deleteContact</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>ruleForm<span class="token punctuation">.</span>contactList<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>
+              <span class="token keyword">this</span><span class="token punctuation">.</span>ruleForm<span class="token punctuation">.</span>contactList<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>
+              <span class="token number">1</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>到这里就完成了, 代码<a target="_blank" rel="noopener" href="https://c242p8.coding-pages.com/html/helloworld.html">体验地址</a></p>
+</li>
+</ol>
 
-	<span class="token comment">//如果只是调用一次的函数, 还可以简写成立即执行函数</span>
-	<span class="token keyword">func</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<a id="more"></a>
-<h4 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h4><p>因为在golang中函数是可以作为参数使用的, 当一个函数的参数需要一个无参数的函数时, 我们想传一个有参的函数进去此时就要用到闭包.</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 闭包</span>
-
-<span class="token comment">//f1 函数要求的参数是无参的函数</span>
-<span class="token keyword">func</span> <span class="token function">f1</span><span class="token punctuation">(</span>f <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"this is f1"</span><span class="token punctuation">)</span>
-	<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token comment">//我想将f2传进去, 此时会报错, 所以我们需要闭包</span>
-<span class="token keyword">func</span> <span class="token function">f2</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"this is f2"</span><span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token comment">//此时定义一个f3函数, 对f2进行包装, f3返回的是无参函数, 正好满足f1的需求</span>
-<span class="token keyword">func</span> <span class="token function">f3</span><span class="token punctuation">(</span>f <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m<span class="token punctuation">,</span> n <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	temp <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token function">f</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"this is f3"</span><span class="token punctuation">)</span>
-	<span class="token keyword">return</span> temp
-<span class="token punctuation">&#125;</span>
-
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	f <span class="token operator">:=</span> <span class="token function">f3</span><span class="token punctuation">(</span>f2<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
-	<span class="token function">f1</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -526,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://nathan98.gitee.io/post/4ac7360d.html">https://nathan98.gitee.io/post/4ac7360d.html</a>
+                    <a href="https://nathan98.gitee.io/post/d2ec29ac.html">https://nathan98.gitee.io/post/d2ec29ac.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -563,15 +631,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Golang/">
-                                    <span class="chip bg-color">Golang</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%85%A5%E9%97%A8/">
-                                    <span class="chip bg-color">入门</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -889,68 +949,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/post/46934849.html">
-                    <div class="card-image">
-                        
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/golang/thumbnail.jpg" class="responsive-img" alt="Golang之Defer函数">
-                        
-                        <span class="card-title">Golang之Defer函数</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            学习golang Defer函数Deferdefer 多用于函数结束之前释放资源 (文件句柄, 数据库链接, socket链接)Go语言中函数的return不是原子操作, 在底层是分为两步来执行.第一步: 返回值复制 defer 第二步: 
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-28
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Golang/" class="post-category">
-                                    Golang
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Golang/">
-                        <span class="chip bg-color">Golang</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%85%A5%E9%97%A8/">
-                        <span class="chip bg-color">入门</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/post/ae5a1ffc.html">
+                <a href="/post/d2ec29ac.html">
                     <div class="card-image">
                         
-                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/golang/thumbnail.jpg" class="responsive-img" alt="Golang之函数">
                         
-                        <span class="card-title">Golang之函数</span>
+                        <img src="/loading.gif" data-original="/medias/featureimages/5.jpg" class="responsive-img" alt="vue+element ui动态表单校验">
+                        
+                        <span class="card-title">vue+element ui动态表单校验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -961,14 +971,55 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Nathan
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/post/dbe9df0a.html">
+                    <div class="card-image">
+                        
+                        <img src="/loading.gif" data-original="https://c242p8.coding-pages.com/images/spring/thumbnail.png" class="responsive-img" alt="SpringCloud-Gateway整合">
+                        
+                        <span class="card-title">SpringCloud-Gateway整合</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Golang/" class="post-category">
-                                    Golang
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    框架
                                 </a>
                             
                             
@@ -978,12 +1029,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Golang/">
-                        <span class="chip bg-color">Golang</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/%E5%85%A5%E9%97%A8/">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/Gateway/">
+                        <span class="chip bg-color">Gateway</span>
                     </a>
                     
                 </div>
